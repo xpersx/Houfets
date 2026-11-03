@@ -9,8 +9,10 @@ Sitio web adaptable para celular y computadora. Incluye presentación del restau
 
 ## Antes de publicar
 1. Reemplaza los productos, descripciones, imágenes y precios de ejemplo por el menú oficial.
-2. Revisa `WHATSAPP_NUMBER` en `script.js`. Está configurado provisionalmente como `593912345678`; confirma que sea el número correcto.
-3. Comprueba la dirección y el enlace de Google Maps.
+2. El enlace directo de WhatsApp facilitado está integrado. El carrito genera un resumen para copiar y pegar en el chat, porque el enlace compartido no expone el número de teléfono para formar un enlace con mensaje precargado.
+3. La ubicación, TikTok, Instagram y WhatsApp están enlazados con las URLs proporcionadas.
 4. Puedes activar GitHub Pages desde Settings → Pages → Deploy from a branch → main → /(root).
 
 El cliente debe revisar y enviar el mensaje desde WhatsApp para confirmar el pedido.
+
+El catálogo actual aún usa productos y precios de ejemplo; sustituirlos por el menú oficial antes de anunciar la web.
