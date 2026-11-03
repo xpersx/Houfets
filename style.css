@@ -28,3 +28,51 @@ footer{border-top:1px solid #282725}
 @media(max-width:760px){.nav-contact{text-align:center}.hero{min-height:570px}.social-inner{display:block}.social-links{margin-top:25px}.social-links a{flex:1;text-align:center}}
 
 .order-summary-copy{display:block;width:100%;min-height:125px;margin-top:12px;padding:12px;border:1px solid var(--line);font:12px "DM Sans";background:#fffaf5;color:var(--ink);}
+
+/* Houfetts dark theme refresh — version 3 */
+:root{--orange:#ff6b2c;--cream:#101010;--ink:#f5f2ee;--muted:#aaa39b;--line:#34312e;color-scheme:dark}
+html,body{background:#101010;color:#f5f2ee}
+body{background:#101010;color:#f5f2ee}
+.site-header{background:#080808;border-bottom:1px solid #292522;box-shadow:0 6px 22px #0007}
+.brand{color:#fff}
+.brand-mark{width:46px;height:46px;border:2px solid var(--orange);border-radius:5px;display:flex;align-items:center;justify-content:center;position:relative;transform:none;color:#fff;background:#171411;font:700 23px Oswald;box-shadow:inset 0 0 0 3px #171411}
+.brand-mark span{color:#fff;line-height:1}
+.brand-mark i{font-style:normal;color:var(--orange);font-size:12px;margin:13px 0 0 -7px}
+.brand small{color:#b7afa6}
+.hero{background-color:#090909}
+.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.68) 55%,rgba(0,0,0,.28))}
+.intro{background:#101010}
+.intro-copy>p:not(.eyebrow){color:#b7b0a8}
+.menu-section{background:#171614;border-top:1px solid #2c2824;border-bottom:1px solid #2c2824}
+.heading-note{color:#aaa39b}
+.notice{background:#241b15;border-left-color:var(--orange);color:#e6c6ae}
+.category-tabs button{border-color:#49423b;color:#d4cec7;background:#201e1b}
+.category-tabs button.active,.category-tabs button:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.menu-card{background:#24211e;border:1px solid #34302b;box-shadow:0 9px 24px #0005}
+.menu-card h3{color:#f5f2ee}
+.menu-card p{color:#b8b0a7}
+.add-button{border-color:#62564c;color:#f3eee8;background:#1b1917}
+.add-button:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.order-section{background:#101010}
+.cart-panel,.customer-form{background:#1b1a18;border-color:#37322d;box-shadow:0 8px 28px #0004}
+.cart-panel h3,.customer-form h3{color:#fff}
+.cart-row{border-color:#3b3530;color:#f1ece6}
+.cart-row small,.empty-cart{color:#aaa39b}
+.cart-total{border-color:#5a5047;color:#e9e2da}
+.customer-form input,.customer-form textarea{background:#111;color:#fff;border-color:#423b34}
+.customer-form input::placeholder,.customer-form textarea::placeholder{color:#827b73}
+.customer-form input:focus,.customer-form textarea:focus{outline-color:var(--orange);border-color:var(--orange)}
+.form-hint{color:#aaa39b}
+.form-message{color:#ff9a67}
+.order-summary-copy{background:#111;color:#fff;border-color:#423b34}
+.location-section{background:#080808;border-top:1px solid #2b2621}
+.map-card{background:linear-gradient(135deg,#26221e,#121110);border-color:#484039}
+.social-section{background:#171614;border-top:1px solid #302b26}
+.social-inner h2{color:#fff}
+.social-inner p:not(.eyebrow){color:#aaa39b}
+.social-links a{background:#22201d;border-color:#4b433a;color:#f4eee8}
+.social-links a:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+footer{background:#050505;border-top:1px solid #28231f;color:#a59e96}
+.button-light{background:#f1e8df;color:#171411}
+.button-light:hover{background:var(--orange);color:white}
+@media(max-width:760px){nav{background:#080808;border-top:1px solid #302b26}.menu-toggle{color:#fff}}
