@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "593912345678"; // Confirma este número antes de publicar.
+const WHATSAPP_CHAT_LINK = "https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0"; // Enlace facilitado por el restaurante.
 const products = [
   {id:1,name:"Hamburguesa clásica",category:"Hamburguesas",price:5,description:"Hamburguesa con vegetales y acompañamientos.",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"},
   {id:2,name:"Hamburguesa especial",category:"Hamburguesas",price:7,description:"Una opción especial para disfrutar.",image:"https://images.unsplash.com/photo-155 burger?auto=format&fit=crop&w=800&q=80".replace("155 burger","1553979459-d2229ba7433a")},
@@ -74,8 +74,16 @@ document.getElementById("orderForm").addEventListener("submit",event=>{
   const lines=cart.map(item=>`• ${item.name} x${item.qty} — ${money(item.price*item.qty)}`).join("\n");
   const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
   const textMessage=`¡Hola! Quiero realizar este pedido en Houfetts Grills:\n\n${lines}\n\n*Total estimado: ${money(total)}*\n\n*Nombre:* ${name}\n*Dirección:* ${address}\n*Referencia:* ${reference||"No especificada"}\n*Notas:* ${notes||"Ninguna"}\n\n¿Me ayudan a confirmar el pedido? `;
-  window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(textMessage),"_blank","noopener");
-  message.textContent="Se abrió WhatsApp. Revisa el pedido y pulsa Enviar para confirmarlo.";
+  message.textContent="Tu pedido está listo. Copia el resumen y envíalo en el chat de WhatsApp que se abrirá.";
+  const summary = document.createElement("textarea");
+  summary.value = textMessage;
+  summary.readOnly = true;
+  summary.className = "order-summary-copy";
+  summary.setAttribute("aria-label","Resumen de pedido para copiar");
+  message.insertAdjacentElement("afterend", summary);
+  summary.focus();
+  summary.select();
+  window.open(WHATSAPP_CHAT_LINK,"_blank","noopener");
 });
 const menuToggle=document.getElementById("menuToggle");
 const mainNav=document.getElementById("mainNav");
