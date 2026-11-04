@@ -76,3 +76,21 @@ footer{background:#050505;border-top:1px solid #28231f;color:#a59e96}
 .button-light{background:#f1e8df;color:#171411}
 .button-light:hover{background:var(--orange);color:white}
 @media(max-width:760px){nav{background:#080808;border-top:1px solid #302b26}.menu-toggle{color:#fff}}
+
+/* Refined motion, brand mark and opt-in sound control */
+.header-actions{display:flex;align-items:center;gap:12px}
+.sound-toggle{display:inline-flex;align-items:center;gap:7px;background:#191715;border:1px solid #51483f;color:#f5eee7;border-radius:4px;padding:9px 11px;font:600 11px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.sound-toggle[aria-pressed="true"]{border-color:var(--orange);color:#ff9b6a}
+.brand-mark{overflow:hidden;box-shadow:0 0 0 3px #191511,0 0 0 4px #ff6b2c55;letter-spacing:-3px}
+.brand-mark span{font-weight:700;transform:translateX(2px)}
+.brand-mark i{font-weight:700;text-shadow:0 0 12px #ff6b2c66}
+.hero-content{animation:heroEnter .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-stamp{animation:stampFloat 5s ease-in-out infinite}
+.button,.nav-contact,.nav-cart,.social-links a,.add-button{transition:transform .22s ease,background .22s ease,border-color .22s ease,color .22s ease}
+.button:hover,.nav-contact:hover,.social-links a:hover,.add-button:hover{transform:translateY(-2px)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@keyframes heroEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes stampFloat{0%,100%{transform:translateY(0) rotate(10deg)}50%{transform:translateY(-8px) rotate(7deg)}}
+@media(max-width:760px){.header-actions{gap:8px}.sound-toggle{padding:8px 9px}.sound-toggle span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal-on-scroll{opacity:1;transform:none}}
