@@ -70,6 +70,7 @@ document.getElementById("orderForm").addEventListener("submit",event=>{
   const address=document.getElementById("customerAddress").value.trim();
   const reference=document.getElementById("customerReference").value.trim();
   const notes=document.getElementById("customerNotes").value.trim();
+  const payment=document.getElementById("paymentMethod").value;
   if(!name||!address){message.textContent="Completa tu nombre y dirección.";return;}
   const lines=cart.map(item=>`• ${item.name} x${item.qty} — ${money(item.price*item.qty)}`).join("\n");
   const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
@@ -127,3 +128,19 @@ if("IntersectionObserver" in window){
     section.classList.add("reveal-on-scroll");revealObserver.observe(section);
   });
 }
+
+/* Active section indicator in the sticky navigation */
+const navSections=[...document.querySelectorAll("main section[id], #privacidad")];
+const navLinks=[...document.querySelectorAll("#mainNav .nav-link")];
+if("IntersectionObserver" in window){
+ const activeObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(!entry.isIntersecting)return;
+   navLinks.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id));
+  });
+ },{rootMargin:"-28% 0px -62% 0px",threshold:0});
+ navSections.forEach(section=>activeObserver.observe(section));
+}
+document.querySelectorAll("#mainNav .nav-link").forEach(link=>link.addEventListener("click",()=>{
+ navLinks.forEach(item=>item.classList.toggle("active",item===link));
+}));
