@@ -1,67 +1,6 @@
-const IMG={smash:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85",wings:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=85",pizza:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85",fries:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85",grilled:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",chicken:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",sides:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85",combo:"https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=85"};
+/* HOUFETTS — FUNCIONES DE LA TIENDA */
+const products = window.HOUFETTS_MENU || [];
 const WHATSAPP_CHAT_LINK="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
-const products=[
-{id:1,name:"Vicio",category:"Smash",price:3,image:IMG.smash,description:"Pan brioche, 100 g de carne, mozzarella, cebolla caramelizada, pepinillo y tocino. Incluye papas y cebolla caramelizada."},
-{id:2,name:"Bacon",category:"Smash",price:3.75,image:IMG.smash,description:"Pan, 100 g de carne, mozzarella, salsa bacon, dos tiras de tocino, pepinillo y salsas."},
-{id:3,name:"Adictiva con Pretzel",category:"Smash",price:4.25,image:IMG.smash,description:"Pan de papa, 100 g de carne, cheddar, cebolla caramelizada, pepinillo y tocino."},
-{id:4,name:"Adictiva con Vainiquilla",category:"Smash",price:4.25,image:IMG.smash,description:"Pan de papa, 100 g de carne, cheddar, cebolla caramelizada, pepinillo y tocino."},
-{id:5,name:"Anillada",category:"Smash",price:3.5,image:IMG.smash,description:"Pan dorado, tres aros de cebolla, cebolla caramelizada, 100 g de carne, cheddar y toppings de tocino. Incluye papas."},
-{id:6,name:"Viciosa Doble",category:"Smash",price:4,image:IMG.smash,description:"Pan dorado, 200 g de carne, cheddar, cebolla caramelizada, pepinillo y tocino."},
-{id:7,name:"H-Awaiana",category:"Smash",price:3.75,image:IMG.smash,description:"Pan dorado, 100 g de carne, cheddar, piña, cebolla caramelizada, pepinillo y tocino."},
-{id:8,name:"Sobredosis de Carne",category:"Smash",price:4,image:IMG.smash,description:"Pan dorado, 100 g de carne, mozzarella, cebolla caramelizada, pepinillo, salsa ranch y salsa chipotle."},
-{id:9,name:"Tradicional",category:"Smash",price:3.5,image:IMG.smash,description:"Pan brioche, carne, mozzarella, lechuga, tomate, cebolla y huevo frito."},
-{id:10,name:"Dosis de Pollo",category:"Smash",price:4,image:IMG.chicken,description:"Pan dorado, 120 g de pollo, salsa ranch, salsa chipotle y pepinillo."},
-{id:11,name:"Adictiva con Cheddar",category:"Smash",price:6,image:IMG.smash,description:"Pan pretzel, 100 g de carne, cheddar, cebolla caramelizada, pepinillo, cheddar y toppings de tocino."},
-{id:12,name:"Hero Smash",category:"Smash",price:6,image:IMG.smash,description:"Hero Smash. Salsas cheddar +$2,00. Doble carne +$1,00."},
-{id:13,name:"5 Alitas",category:"Alitas",price:4.25,image:IMG.wings,description:"5 alitas con papas y salsas. Incluye 2 salsas opcionales."},
-{id:14,name:"10 Alitas",category:"Alitas",price:8.5,image:IMG.wings,description:"10 alitas con papas y salsas. Incluye 2 salsas opcionales."},
-{id:15,name:"15 Alitas",category:"Alitas",price:12.75,image:IMG.wings,description:"15 alitas con papas y salsas. Incluye 3 salsas opcionales."},
-{id:16,name:"20 Alitas",category:"Alitas",price:17,image:IMG.wings,description:"20 alitas con papas y salsas. Incluye 4 salsas opcionales."},
-{id:17,name:"25 Alitas",category:"Alitas",price:21.25,image:IMG.wings,description:"25 alitas con papas y salsas. Incluye 5 salsas opcionales."},
-{id:18,name:"Alita adicional",category:"Alitas",price:.85,image:IMG.wings,description:"Unidad adicional de chicken wings."},
-{id:19,name:"Pizza de Peperoni Clásica",category:"Pizzas",price:2.5,image:IMG.pizza,description:"Masa italiana, tomate, queso gratinado, peperoni y orégano."},
-{id:20,name:"Pizza Mixta — Doble Sabor",category:"Pizzas",price:2.5,image:IMG.pizza,description:"Masa italiana, tomate, mozzarella gratinada, jamón de primera, peperoni y orégano."},
-{id:21,name:"Pizza Hawaiana",category:"Pizzas",price:3,image:IMG.pizza,description:"Masa italiana, tomate, mozzarella gratinada, jamón de primera y orégano."},
-{id:22,name:"Pizza Mixta — Triple Sabor",category:"Pizzas",price:3,image:IMG.pizza,description:"Masa italiana, tomate, mozzarella gratinada, jamón de primera, peperoni, piña y orégano."},
-{id:23,name:"Chicken Tenders",category:"Extras",price:null,image:IMG.chicken,description:"Porción de papas, orégano, 3 tiras de pollo, 2 rebanadas de pan brioche, salsa rosada y salsa ranch. Precio no visible en el PDF."},
-{id:24,name:"Promo de Viciosas",category:"Combos",price:6.2,image:IMG.combo,description:"Promoción de viciosas. Consulta los componentes exactos al confirmar."},
-{id:25,name:"Promo de Adictivas",category:"Combos",price:8.9,image:IMG.combo,description:"Promoción de adictivas. Consulta los componentes exactos al confirmar."},
-{id:26,name:"Promo de Wings",category:"Combos",price:10,image:IMG.wings,description:"Promoción de wings según la carta."},
-{id:27,name:"Promo Wings — 15 + 5 alitas gratis",category:"Combos",price:14,image:IMG.wings,description:"Combo wings según la carta."},
-{id:28,name:"Promo Trío",category:"Combos",price:14,image:IMG.combo,description:"Promo trío según la presentación del menú."},
-{id:29,name:"Promo de El Pepe",category:"Combos",price:5.25,image:IMG.pizza,description:"Promoción El Pepe según la carta."},
-{id:30,name:"Pizzaditas",category:"Combos",price:10,image:IMG.pizza,description:"Promoción de pizzaditas según la carta."},
-{id:31,name:"Promo alitas: paga 6 y lleva 8",category:"Combos",price:null,image:IMG.wings,description:"Promoción de miércoles: paga 6 y lleva 8. Incluye 3 salsas opcionales. Precio no legible en la carta."},
-{id:32,name:"Promo alitas: paga 8 y lleva 12",category:"Combos",price:6.8,image:IMG.wings,description:"Promoción de miércoles: paga 8 y lleva 12. Incluye 3 salsas opcionales."},
-{id:33,name:"Promo alitas: paga 12 y lleva 16",category:"Combos",price:null,image:IMG.wings,description:"Promoción de miércoles: paga 12 y lleva 16. Incluye 4 salsas opcionales. Precio no legible en la carta."},
-{id:34,name:"Promo alitas: paga 16 y lleva 20",category:"Combos",price:null,image:IMG.wings,description:"Promoción de miércoles: paga 16 y lleva 20. Incluye 5 salsas opcionales. Precio no legible en la carta."},
-{id:35,name:"Salchicha",category:"Extras",price:.5,image:IMG.grilled,description:"1 salchicha."},
-{id:36,name:"Papas fritas — BP",category:"Extras",price:1,image:IMG.fries,description:"Porción de papas fritas, tamaño BP."},
-{id:37,name:"Papas fritas — BM",category:"Extras",price:1.5,image:IMG.fries,description:"Porción de papas fritas, tamaño BM."},
-{id:38,name:"Papas fritas — BG",category:"Extras",price:2,image:IMG.fries,description:"Porción de papas fritas, tamaño BG."},
-{id:39,name:"Pollo frito — PP",category:"Extras",price:1.25,image:IMG.chicken,description:"1 presa de pollo frito, tamaño PP."},
-{id:40,name:"Pollo frito — PG",category:"Extras",price:1.5,image:IMG.chicken,description:"1 presa de pollo frito, tamaño PG."},
-{id:41,name:"Huevo frito",category:"Extras",price:.5,image:IMG.sides,description:"1 huevo frito."},
-{id:42,name:"Toppings de tocino",category:"Extras",price:1,image:IMG.grilled,description:"Porción de toppings de tocino."},
-{id:43,name:"Cheddar con tocino",category:"Extras",price:2,image:IMG.fries,description:"Acompáñalo con tus papas o smash."},
-{id:44,name:"Inyección de cheddar",category:"Extras",price:1,image:IMG.smash,description:"Extra de cheddar."},
-{id:45,name:"Maduro con queso",category:"Extras",price:1.5,image:IMG.sides,description:"Maduro con queso gratinado."},
-{id:46,name:"Patacones con queso",category:"Extras",price:1.5,image:IMG.sides,description:"7 patacones con queso gratinado."},
-{id:47,name:"Morito de choclo",category:"Extras",price:4,image:IMG.sides,description:"Porción de risotto de choclo, chicloso y cremoso."},
-{id:48,name:"Morito de lenteja",category:"Extras",price:4,image:IMG.sides,description:"Porción de risotto de lenteja, chicloso y cremoso."},
-{id:49,name:"Proteína adicional",category:"Extras",price:2,image:IMG.grilled,description:"Opciones indicadas: pollo, chuleta, costilla o carne."},
-{id:50,name:"Chuzo parrillero",category:"Extras",price:.75,image:IMG.grilled,description:"Chuzo parrillero."},
-{id:51,name:"Pechuga asada con moro",category:"Parrillas",price:7,image:IMG.grilled,description:"Pechuga asada. Acompañamientos: patacones o papas fritas con ensalada ($2,00); arroz con menestra ($2,50 / $3,50); moro de lenteja o choclo ($7,00, según la carta). Confirmar cómo se aplican los valores."},
-{id:52,name:"Costilla de cerdo con moro",category:"Parrillas",price:9,image:IMG.grilled,description:"Costilla de cerdo. Acompañamientos: patacones o papas fritas con ensalada ($2,50); arroz con menestra ($3,50 / $5,00); moro de lenteja o choclo ($9,00, según la carta). Confirmar cómo se aplican los valores."},
-{id:53,name:"Chicken Tenders (porción)",category:"Parrillas",price:null,image:IMG.chicken,description:"La carta no muestra un precio legible para esta porción. Consultar."},
-{id:54,name:"Pechuga asada + patacones/papas y ensalada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta menciona patacones o papas fritas con ensalada ($2,00), arroz con menestra ($2,50 / $3,50) y moro de lenteja o choclo ($7,00). Confirmar qué valor corresponde al plato o al acompañamiento."},
-{id:55,name:"Pechuga asada + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $2,50 / $3,50 para arroz con menestra. Confirmar cuál corresponde al tamaño."},
-{id:56,name:"Costilla + patacones/papas y ensalada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta menciona patacones o papas fritas con ensalada ($2,50), arroz con menestra ($3,50 / $5,00) y moro de lenteja o choclo ($9,00). Confirmar qué valor corresponde al plato o al acompañamiento."},
-{id:57,name:"Costilla + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $3,50 / $5,00 para arroz con menestra. Confirmar cuál corresponde al tamaño."}
-];
-
-const WHATSAPP="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],money=n=>"$"+Number(n).toFixed(2);
 let cart=[],category="Todos",search="",audio=null,toastTimer;
 function beep(type){try{if(!audio)audio=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type="sine";o.frequency.value=type==="add"?740:type==="remove"?270:500;g.gain.setValueAtTime(.018,audio.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+.08);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.085)}catch(e){}}
 document.addEventListener("pointerdown",()=>{if(!audio){try{audio=new(window.AudioContext||window.webkitAudioContext)();audio.resume();beep("tap")}catch(e){}}},{once:true,passive:true});
