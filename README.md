@@ -2,20 +2,59 @@
 
 Sitio estático responsive para GitHub Pages.
 
-## Archivos
-- index.html: estructura, secciones, pedido y redes.
-- style.css: diseño adaptable a móvil y escritorio.
-- script.js: menú basado en la carta PDF, carrito, delivery y resumen para WhatsApp.
-- houfetts-logo.svg: versión vectorial del logotipo Houfetts con llama, reconstruida siguiendo el arte de la carta proporcionada.
+## Estructura del proyecto
 
-## Publicar
-En GitHub: Settings → Pages → Deploy from a branch → main → /(root).
+- `index.html`: secciones, navegación, visor de la carta original, pedido y redes sociales.
+- `style.css`: colores, tipografías, animaciones, bordes y diseño adaptable.
+- `menu.js`: catálogo editable. Aquí se cambian nombres, categorías, precios, descripciones e imágenes de los productos.
+- `script.js`: funcionamiento del buscador, filtros, carrito, delivery, WhatsApp, sonidos y ventanas legales.
+- `houfetts-logo.svg`: recurso de logotipo usado en el encabezado y pie de página.
 
-## Información de la carta
-Los productos y precios visibles se transcribieron del PDF recibido. Cuando la carta no muestra un precio legible (Chicken Tenders, platos de pechuga/costilla y bebidas), se indica “Consultar” en lugar de inventarlo. Los cócteles/bebidas tienen su información tapada en el PDF. El cargo de delivery de “lugares cerca” figura como $0,75–$1,00 y requiere confirmación; Florida Norte $2, Urdesa $3 y Centro de la ciudad $4.
+## Cómo cambiar productos
 
-La carta muestra horario martes-jueves 16:00–21:30, viernes-sábado 16:30–22:00 y domingo 16:30–21:30. Confirmar antes de publicar si sigue vigente.
+Abre `menu.js`. Cada producto tiene estos campos:
 
-El formulario no guarda datos ni procesa pagos: prepara el resumen para que el cliente lo revise y lo envíe por WhatsApp. Los datos de transferencia se solicitan en el chat; no se publica información bancaria o cédula en el sitio.
+```js
+{
+  id: 1,
+  name: "Nombre del producto",
+  category: "Smash",
+  price: 3.50,
+  image: IMG.smash,
+  description: "Descripción del producto"
+}
+```
 
-Ubicación: enlace de Google Maps proporcionado. Redes: TikTok e Instagram @houfetts.
+- `name`: nombre que aparece en la tarjeta.
+- `category`: categoría usada por los filtros.
+- `price`: precio numérico en dólares. Usa `null` si el precio debe consultarse.
+- `image`: imagen asignada al producto.
+- `description`: ingredientes o descripción.
+
+## Cómo cambiar fotografías
+
+En la parte superior de `menu.js` está el objeto `IMG`. Cambia la URL de `smash`, `wings`, `pizza`, `fries`, `grilled`, `chicken`, `sides` o `combo` por la ruta de la nueva imagen, por ejemplo:
+
+```js
+smash: "assets/mi-hamburguesa.webp"
+```
+
+Crea la carpeta `assets` en la raíz del repositorio y sube ahí las fotografías optimizadas en JPG o WebP. Para asignar una imagen distinta a un solo producto, cambia su campo `image` a la ruta específica.
+
+## Cómo cambiar el texto, los colores o los datos
+
+- Textos y secciones: `index.html`.
+- Colores y estilos: variables al inicio de `style.css` (`--bg`, `--orange`, `--gold`, etc.).
+- Número/enlace de WhatsApp: constante `WHATSAPP` en `script.js`.
+- Redes y ubicación: enlaces en `index.html`.
+- Tarifas de delivery: función `delivery()` en `script.js` y el selector `deliveryZone` en `index.html`.
+
+## Carta PDF
+
+La página incluye un visor que abre el PDF original facilitado. La transcripción del catálogo es una versión web editable; revisa nombres, descripciones y valores con la carta original antes de publicar. No se deben inventar precios cuando no se distinguen.
+
+## Publicar con GitHub Pages
+
+En GitHub: **Settings → Pages → Deploy from a branch → main → /(root)**.
+
+El formulario no guarda pedidos en un servidor ni procesa pagos: prepara un resumen para que el cliente lo revise y lo envíe por WhatsApp. Los pagos se coordinan directamente con el negocio.
