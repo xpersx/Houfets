@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <script src="script.js" defer></script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#inicio"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILL</small></span></a>
+    <a class="brand" href="#inicio"><img class="brand-logo-img" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span class="brand-word">GRILL<small>LA 21</small></span></a>
     <div class="header-actions"><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" title="Activar sonidos de interfaz">♫ <span>Sonido apagado</span></button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div>
     <nav id="mainNav">
       <a class="nav-link active" href="#inicio">Inicio</a><a class="nav-link" href="#nosotros">Nosotros</a><a class="nav-link" href="#menu">Menú</a><a class="nav-link" href="#ubicacion">Ubicación</a>
@@ -23,7 +23,7 @@
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-shade"></div><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-brand-lockup"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILL</small></span></div>
+      <div class="hero-shade"></div><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-brand-lockup"><img class="brand-logo-img" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span class="brand-word">GRILL<small>LA 21</small></span></div>
       <div class="hero-content">
         <p class="eyebrow">SABOR A LA PARRILLA</p>
         <h1>EL SABOR QUE<br><em>TE REÚNE.</em></h1>
@@ -38,7 +38,7 @@
       <div class="intro-copy">
         <p class="eyebrow">BIENVENIDOS A HOUFETTS</p>
         <h2>BUEN SABOR.<br><em>BUENOS MOMENTOS.</em></h2>
-        <p>En Houfetts Grills queremos que disfrutes cada comida. Explora nuestro menú, arma tu pedido y envíalo fácilmente por WhatsApp.</p>
+        <p>En Houfetts queremos que disfrutes cada comida. Explora nuestro menú, arma tu pedido y envíalo fácilmente por WhatsApp.</p>
         <a class="text-link" href="#menu">DESCUBRIR EL MENÚ ↗</a>
       </div>
     </section>
@@ -49,13 +49,9 @@
           <div><p class="eyebrow">HECHO PARA DISFRUTAR</p><h2>NUESTRO <em>MENÚ</em></h2></div>
           <p class="heading-note">Elige tus favoritos y agrégalos a tu pedido.</p>
         </div>
-        <div class="notice"><strong>Menú pendiente de confirmar:</strong> los platos y precios que aparecen son ejemplos de diseño, no la carta oficial. Envíanos la carta completa para publicar todos los productos y precios correctos.</div>
+        <div class="notice"><strong>Carta oficial cargada.</strong> Productos y precios transcritos del menú facilitado. Algunos artículos no muestran precio legible en el PDF y aparecen como “Consultar”.</div>
         <div class="category-tabs" id="categoryTabs">
-          <button class="active" data-category="Todos">Todo</button>
-          <button data-category="Hamburguesas">Hamburguesas</button>
-          <button data-category="Parrillas">Parrillas</button>
-          <button data-category="Acompañamientos">Acompañamientos</button>
-          <button data-category="Bebidas">Bebidas</button>
+          <button class="active" data-category="Todos">Todo</button><button data-category="Smash">Smash</button><button data-category="Alitas">Alitas</button><button data-category="Pizzas">Pizzas</button><button data-category="Combos">Combos</button><button data-category="Parrillas">Parrillas</button><button data-category="Extras">Extras</button><button data-category="Bebidas">Bebidas</button>
         </div>
         <div class="menu-grid" id="menuGrid"></div>
       </div>
@@ -70,15 +66,15 @@
         <div class="cart-panel">
           <h3>Tu carrito <span id="cartItemsLabel">0 productos</span></h3>
           <div id="cartItems" class="cart-items"><p class="empty-cart">Todavía no agregas productos.</p></div>
-          <div class="cart-total"><span>Total estimado</span><strong id="cartTotal">$0.00</strong></div>
+          <div class="cart-total"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><div class="delivery-line"><span>Delivery</span><strong id="deliveryCost">Retiro: $0.00</strong></div><div class="cart-total grand-total"><span>Total estimado</span><strong id="cartTotal">$0.00</strong></div>
         </div>
         <form id="orderForm" class="customer-form">
           <h3>Datos del cliente</h3>
           <label>Nombre completo<input id="customerName" name="name" type="text" placeholder="Tu nombre" required></label>
           <label>Dirección de entrega<input id="customerAddress" name="address" type="text" placeholder="Calle, sector y número de casa" required></label>
-          <label>Referencia o indicaciones<textarea id="customerReference" name="reference" rows="2" placeholder="Ej. Casa de dos pisos, junto al parque..."></textarea></label>
+          <label>Tipo de entrega<select id="deliveryMode" name="deliveryMode"><option value="pickup">Retiro en el local</option><option value="delivery">Delivery</option></select></label><label id="deliveryZoneWrap" hidden>Zona de delivery<select id="deliveryZone" name="deliveryZone"><option value="near">Lugares cerca — $0,75 a $1,00 (confirmar)</option><option value="florida">Florida Norte — $2,00</option><option value="urdesa">Urdesa — $3,00</option><option value="centro">Centro de la ciudad — $4,00</option></select></label><label>Referencia o indicaciones<textarea id="customerReference" name="reference" rows="2" placeholder="Ej. Casa de dos pisos, junto al parque..."></textarea></label>
           <label>Notas del pedido<textarea id="customerNotes" name="notes" rows="2" placeholder="Detalles adicionales de tu pedido"></textarea></label>
-          <label>Método de pago<select id="paymentMethod" name="payment"><option value="Efectivo (confirmar disponibilidad)">Efectivo (confirmar)</option><option value="Transferencia (confirmar datos con el restaurante)">Transferencia (confirmar)</option><option value="Consultar al restaurante">Consultar al restaurante</option></select></label>
+          <label>Método de pago<select id="paymentMethod" name="payment"><option value="Efectivo">Efectivo</option><option value="Transferencia Banco Pichincha (solicitar datos por WhatsApp)">Transferencia Banco Pichincha (solicitar datos por WhatsApp)</option><option value="Consultar otras formas de pago">Consultar otras formas de pago</option></select></label>
           <button class="button button-primary submit-order" type="submit">ENVIAR PEDIDO POR WHATSAPP ↗</button>
           <p class="form-hint">WhatsApp se abrirá con el pedido listo. Revisa el mensaje y pulsa enviar para confirmarlo.</p>
           <p id="formMessage" class="form-message" role="status"></p>
@@ -91,16 +87,16 @@
         <div><p class="eyebrow">ENCUÉNTRANOS</p><h2>VISÍTANOS EN<br><em>LA 21</em></h2><p>Consulta nuestra ubicación en Google Maps y encuentra la mejor ruta para llegar.</p>
           <a class="button button-light" href="https://maps.app.goo.gl/bFeumufzgm8fYtMw7" target="_blank" rel="noopener">ABRIR EN GOOGLE MAPS ↗</a>
         </div>
-        <div class="map-card"><div class="map-pin">⌖</div><strong>HOUFETTS GRILLS</strong><span>La 21 · Guayaquil, Ecuador</span><a href="https://maps.app.goo.gl/bFeumufzgm8fYtMw7" target="_blank" rel="noopener">Ver ubicación ↗</a></div>
+        <div class="map-card"><div class="map-pin">⌖</div><strong>HOUFETTS GRILL</strong><span>La 21 · Guayaquil, Ecuador</span><a href="https://maps.app.goo.gl/bFeumufzgm8fYtMw7" target="_blank" rel="noopener">Ver ubicación ↗</a></div><div class="hours-card"><h3>HORARIO DE ATENCIÓN</h3><p><b>Martes a jueves</b><span>4:00 pm – 9:30 pm</span></p><p><b>Viernes y sábado</b><span>4:30 pm – 10:00 pm</span></p><p><b>Domingo</b><span>4:30 pm – 9:30 pm</span></p><small>Horario indicado en la carta proporcionada.</small></div>
       </div>
     </section>
   </main>
-<section class="legal-section" id="privacidad"><div class="section-wrap legal-grid"><div><p class="eyebrow">INFORMACIÓN DEL SITIO</p><h2>PRIVACIDAD <em>&amp; CONDICIONES</em></h2><p class="legal-intro">Información clara sobre el uso de los datos al preparar un pedido.</p></div><div class="legal-copy"><h3>Privacidad</h3><p>Los datos que ingreses en el formulario —nombre, dirección, referencia y notas— se utilizan para preparar y coordinar tu pedido. Al continuar, el resumen se abre en WhatsApp para que tú lo revises y lo envíes. Esta página no incorpora una base de datos propia ni procesa pagos en línea.</p><h3>Pedidos y precios</h3><p>El pedido se considera solicitado cuando lo envías por WhatsApp y el restaurante confirma disponibilidad, precio final, delivery y forma de pago. Los precios y tarifas deben verificarse con el restaurante antes de publicar esta web.</p><h3>Uso del sitio</h3><p>Las imágenes pueden ser ilustrativas. La marca y los enlaces sociales identifican los canales oficiales compartidos por el negocio. No ingreses información bancaria sensible en este formulario.</p></div></div></section>
+<section class="legal-section" id="privacidad"><div class="section-wrap legal-grid"><div><p class="eyebrow">INFORMACIÓN DEL SITIO</p><h2>PRIVACIDAD <em>&amp; CONDICIONES</em></h2><p class="legal-intro">Información clara sobre el uso de los datos al preparar un pedido.</p></div><div class="legal-copy"><h3>Privacidad</h3><p>Los datos que ingreses en el formulario —nombre, dirección, referencia y notas— se usan únicamente para preparar y coordinar tu pedido por WhatsApp. Esta página no guarda una base de datos ni procesa pagos en línea. Evita enviar claves o datos bancarios sensibles.</p><h3>Pedidos y precios</h3><p>El pedido se considera solicitado cuando lo envías por WhatsApp y el restaurante confirma disponibilidad, precio final, delivery y forma de pago. Los precios y tarifas deben verificarse con el restaurante antes de publicar esta web.</p><h3>Uso del sitio</h3><p>Las imágenes pueden ser ilustrativas. La marca y los enlaces sociales identifican los canales oficiales compartidos por el negocio. No ingreses información bancaria sensible en este formulario.</p></div></div></section>
 
-  <section class="social-section"><div class="section-wrap social-inner"><div><p class="eyebrow">SÍGUENOS</p><h2>HOUFETTS <em>EN REDES</em></h2><p>Entérate de novedades y comparte tus favoritos.</p></div><div class="social-links">
+  <section class="social-section" id="redes"><div class="section-wrap social-inner"><div><p class="eyebrow">SÍGUENOS</p><h2>HOUFETTS <em>EN REDES</em></h2><p>Entérate de novedades y comparte tus favoritos.</p></div><div class="social-links">
 <a class="social-link" href="https://www.tiktok.com/@houfetts" target="_blank" rel="noopener" aria-label="Abrir TikTok Houfetts"><span class="social-icon tiktok-icon">♪</span><span><strong>TikTok</strong><small>@houfetts</small></span><b>↗</b></a>
 <a class="social-link" href="https://www.instagram.com/houfetts/" target="_blank" rel="noopener" aria-label="Abrir Instagram Houfetts"><span class="social-icon instagram-icon">◎</span><span><strong>Instagram</strong><small>@houfetts</small></span><b>↗</b></a>
 <a class="social-link" href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener" aria-label="Contactar Houfetts por WhatsApp"><span class="social-icon whatsapp-icon">✓</span><span><strong>WhatsApp</strong><small>Contactar / pedir</small></span><b>↗</b></a>
-</div></div></section><footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILLS · LA 21</small></span></a><p>© <span id="year"></span> Houfetts Grills · La 21.</p></footer>
+</div></div></section><footer><a class="brand footer-brand" href="#inicio"><img class="brand-logo-img" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span class="brand-word">GRILL<small>LA 21</small></span></a><p>© <span id="year"></span> Houfetts Grill. Todos los derechos reservados.</p></footer>
 </body>
 </html>
