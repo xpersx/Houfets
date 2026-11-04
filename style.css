@@ -147,3 +147,96 @@ body{font-family:"Manrope","DM Sans",sans-serif}
 @media(max-width:850px){.social-links{grid-template-columns:1fr}.legal-grid{grid-template-columns:1fr;gap:25px}.hero-brand-lockup{left:8%}}
 @media(max-width:760px){.hero{min-height:650px;padding-top:100px}.hero-brand-lockup{top:25px}.hero h1{font-size:clamp(58px,15vw,80px)}.hero-stamp{right:7%;bottom:35px;width:120px;height:120px}.hero-stamp span{font-size:15px}.hero-stamp b{font-size:30px}.orbit-one{width:340px;height:340px;right:-180px;top:160px}.orbit-two{width:260px;height:260px;right:-130px;top:200px}.site-header nav .nav-link{padding:8px 0}.social-links{display:grid;grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.orbit-one,.orbit-two,.hero-stamp{animation:none}}
+
+/* Houfetts Grill: refined dark premium theme + accessible mobile layout */
+:root{--orange:#ed7139;--orange2:#ff9a54;--cream:#11100f;--ink:#f7f1ea;--muted:#b7aaa0;--line:#39312c;color-scheme:dark}
+html{scroll-padding-top:88px;scroll-behavior:smooth}
+body{background:#11100f;color:#f7f1ea;font-family:"Manrope","DM Sans",sans-serif;overflow-x:hidden}
+.site-header{height:82px;padding:0 clamp(16px,5vw,76px);background:rgba(9,9,9,.96);backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12;box-shadow:0 8px 30px #0006}
+.brand{gap:13px;min-width:0}.brand-logo-img{display:block;width:156px;height:auto;max-height:60px;object-fit:contain}.brand-word{font:900 22px "Barlow Condensed",Oswald,sans-serif;letter-spacing:2px;color:#fff}.brand-word small{font:700 9px Manrope,sans-serif;letter-spacing:3px;color:var(--orange2);margin-top:3px}
+nav{gap:clamp(12px,2vw,27px)}nav a{font-size:12px}
+.menu-toggle{border-radius:12px;padding:9px 12px}
+.hero{min-height:690px;padding:90px clamp(24px,10vw,150px);background-position:center 52%;border-bottom:1px solid #ffffff12}
+.hero-shade{background:linear-gradient(90deg,rgba(8,8,8,.96),rgba(8,8,8,.72) 52%,rgba(8,8,8,.28))}
+.hero-brand-lockup{top:32px;left:clamp(24px,9vw,130px);display:flex;align-items:center}.hero-brand-lockup .brand-logo-img{width:210px;max-height:105px}.hero-brand-lockup>span{display:none}
+.hero-content{max-width:650px}.hero h1{font-family:"Barlow Condensed",Oswald,sans-serif;font-weight:900;font-size:clamp(64px,8.5vw,112px);line-height:.88;letter-spacing:-1.5px}
+.hero-content>p:not(.eyebrow){font-size:16px;color:#ddd2c8;max-width:460px;line-height:1.7}
+.hero-stamp{border:1px solid #ed7139;border-radius:50%;background:radial-gradient(circle,#211813aa,#0a0908aa);box-shadow:0 0 0 8px #ed71391a,0 16px 45px #0008;backdrop-filter:blur(8px)}
+.button{border-radius:999px;padding:15px 23px;box-shadow:0 8px 22px #0004}
+.button-primary{background:linear-gradient(135deg,#f18448,#cf4f2c);box-shadow:0 9px 25px #e86d3533}
+.button-primary:hover{background:linear-gradient(135deg,#ff9a54,#e35a2e)}
+.section-wrap{max-width:1200px}
+.intro{padding-top:112px;padding-bottom:112px;gap:8%}
+.intro-image{border-radius:22px;overflow:hidden;box-shadow:0 22px 60px #0007}
+.intro-image:after{border-radius:22px;inset:13px -13px -13px 13px}
+.intro-image img{border-radius:22px}
+.intro h2,.section-heading h2,.location-content h2,.legal-grid h2{font-family:"Barlow Condensed",Oswald,sans-serif;font-weight:900;letter-spacing:-.4px}
+.menu-section{background:linear-gradient(180deg,#191614,#121110);border-top:1px solid #ffffff0c;border-bottom:1px solid #ffffff0c;padding:100px 0}
+.notice{border:1px solid #6a3c29;border-left:4px solid var(--orange);border-radius:13px;background:#211812;color:#e9c8b2;padding:15px 18px}
+.category-tabs{gap:10px;overflow-x:auto;flex-wrap:nowrap;padding:4px 2px 12px;scrollbar-width:thin}
+.category-tabs button{white-space:nowrap;border-radius:999px;background:#201d1a;border-color:#484039;color:#e9e0d7;padding:11px 18px;transition:.25s}
+.category-tabs button.active,.category-tabs button:hover{background:linear-gradient(135deg,#f18448,#ce512d);border-color:transparent;box-shadow:0 6px 18px #df6b3633}
+.menu-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.menu-card{border:1px solid #ffffff12;border-radius:19px;background:linear-gradient(155deg,#28221e,#191715);overflow:hidden;box-shadow:0 12px 34px #0005;transition:transform .32s cubic-bezier(.2,.75,.25,1),box-shadow .32s,border-color .32s}
+.menu-card:hover{transform:translateY(-7px);border-color:#ed713966;box-shadow:0 20px 44px #0008,0 0 0 1px #ed713922}
+.menu-card img{height:210px;object-fit:cover;filter:saturate(.92);transition:transform .6s,filter .4s}
+.menu-card:hover img{transform:scale(1.055);filter:saturate(1.1)}
+.menu-card-body{padding:20px}
+.menu-card h3{font:700 21px "Barlow Condensed",Oswald,sans-serif;letter-spacing:.3px;color:#fff}
+.menu-card p{min-height:48px;color:#bcb0a6;font-size:12px;line-height:1.7}
+.price{color:#ff9a54;font-size:15px}
+.add-button{border-radius:999px;border:1px solid #766255;background:#1c1917;color:#fff;padding:12px 15px}
+.add-button:hover{background:linear-gradient(135deg,#f18448,#ce512d);border-color:transparent;box-shadow:0 7px 18px #e86d3533}
+.order-section{padding-top:105px;padding-bottom:105px}
+.cart-panel,.customer-form{border:1px solid #ffffff14;border-radius:20px;background:linear-gradient(145deg,#211e1b,#171513);box-shadow:0 18px 44px #0005;padding:28px}
+.cart-panel h3,.customer-form h3{font:700 25px "Barlow Condensed",Oswald,sans-serif;letter-spacing:.4px}
+.cart-row{border-color:#ffffff16}.quantity-controls button{border-radius:8px;background:#27221e;color:#fff;border-color:#51463d}
+.cart-total{border-color:#5a4c41}.delivery-line{display:flex;justify-content:space-between;padding-top:12px;color:#c7b9ae;font-size:13px}.delivery-line strong{color:#ff9a54}
+.grand-total{margin-top:13px;border-top:1px solid #51453b}
+.customer-form label{font-size:12px;color:#e7ddd4}
+.customer-form input,.customer-form textarea,.customer-form select{border:1px solid #4b4038;border-radius:12px;background:#100f0e;color:#fff;padding:13px 14px;min-height:46px}
+.customer-form textarea{min-height:76px}
+.customer-form input:focus,.customer-form textarea:focus,.customer-form select:focus{outline:2px solid #ed713966;border-color:#ed7139}
+.customer-form select option{background:#171513;color:#fff}
+.submit-order{border-radius:999px}
+.order-summary-copy{background:#111;color:#fff;border:1px solid #4b4038;border-radius:12px}
+.location-section{background:radial-gradient(ellipse at 15% 20%,#382218,#0c0b0a 65%);padding:95px 0}
+.location-content{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:28px}
+.map-card,.hours-card{width:100%;border:1px solid #ffffff18;border-radius:20px;background:linear-gradient(145deg,#29231f,#151311);box-shadow:0 20px 50px #0006;padding:30px}
+.map-card{min-height:220px}
+.hours-card{grid-column:2;margin-top:-8px}
+.hours-card h3{font:800 21px "Barlow Condensed",Oswald,sans-serif;letter-spacing:1px;margin:0 0 18px;color:#fff}
+.hours-card p{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ffffff12;padding:10px 0;margin:0!important;max-width:none!important}
+.hours-card p b{color:#f3e9df;font-size:12px}.hours-card p span{color:#ff9a54;font-size:12px}.hours-card small{display:block;color:#8f8379;margin-top:14px;font-size:10px}
+.social-section{background:#191614;border-top:1px solid #ffffff12;padding:72px 0}
+.social-link{border-radius:16px;background:linear-gradient(145deg,#29231f,#171513);border-color:#ffffff17;box-shadow:0 9px 24px #0004}
+.legal-section{background:#11100f;padding:85px 0}
+.legal-copy{border:1px solid #ffffff12;border-radius:18px;padding:25px;background:#191715}
+footer{background:#080808;border-top:1px solid #ffffff12;padding:24px clamp(18px,6vw,80px)}
+footer .brand-logo-img{width:138px}
+footer .brand-word{font-size:18px}
+@media(max-width:900px){.site-header{padding:0 20px}.brand-logo-img{width:125px}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.location-content{grid-template-columns:1fr 1fr}.hours-card{grid-column:2}}
+@media(max-width:760px){
+ .site-header{height:72px;padding:0 15px}.brand{gap:8px}.brand-logo-img{width:112px;max-height:50px}.brand-word{font-size:18px}
+ .header-actions{gap:6px}.sound-toggle{font-size:10px;padding:8px 9px}.sound-toggle span{display:none}
+ nav{top:72px;left:10px;right:10px;padding:18px;background:#111;border:1px solid #ffffff18;border-radius:0 0 16px 16px;box-shadow:0 18px 35px #0009}
+ nav.open{display:flex;gap:15px}nav a{padding:9px 5px}.site-header nav .nav-link{padding:10px 4px}
+ .hero{min-height:640px;padding:130px 25px 75px;background-position:58% center}
+ .hero-brand-lockup{top:18px;left:22px}.hero-brand-lockup .brand-logo-img{width:160px;max-height:78px}
+ .hero h1{font-size:clamp(58px,14vw,82px);line-height:.9}
+ .hero-stamp{right:20px;bottom:22px;width:112px;height:112px}.hero-stamp span{font-size:15px}.hero-stamp b{font-size:28px}
+ .orbit-one{width:330px;height:330px;right:-180px;top:170px}.orbit-two{width:245px;height:245px;right:-135px;top:210px}
+ .intro{padding:76px 22px;gap:36px}.intro-image{height:270px;margin:0 10px 0 0}
+ .menu-section{padding:75px 0}.section-wrap{padding-left:18px;padding-right:18px}
+ .section-heading{display:block}.heading-note{margin-top:13px}
+ .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+ .menu-card{border-radius:14px}.menu-card img{height:145px}.menu-card-body{padding:13px}
+ .menu-card h3{font-size:17px}.menu-card p{font-size:11px;min-height:55px}
+ .price{font-size:13px}.add-button{font-size:9px;padding:10px 8px;letter-spacing:.3px}
+ .order-section{padding:75px 18px}.order-layout{grid-template-columns:1fr;gap:16px}.cart-panel,.customer-form{padding:20px;border-radius:16px}
+ .location-section{padding:70px 0}.location-content{display:grid;grid-template-columns:1fr;gap:20px}.map-card{margin:0;min-height:190px}.hours-card{grid-column:1;margin:0;padding:22px}
+ .social-section{padding:58px 0}.social-links{grid-template-columns:1fr}.legal-grid{grid-template-columns:1fr;gap:22px}
+ footer{align-items:center;text-align:center;flex-direction:column;gap:8px}
+}
+@media(max-width:390px){.brand-logo-img{width:92px}.brand-word{font-size:16px}.hero{padding-left:19px;padding-right:19px}.hero h1{font-size:56px}.menu-grid{grid-template-columns:1fr}.menu-card img{height:190px}.menu-card p{min-height:0}.category-tabs button{padding:10px 15px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
