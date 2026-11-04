@@ -1,18 +1,21 @@
-# Houfetts Grills - Florida
+# Houfetts Grill — La 21
 
-Sitio web adaptable para celular y computadora. Incluye presentación del restaurante, menú filtrable, carrito, formulario de entrega y armado del pedido para WhatsApp.
+Sitio estático responsive para GitHub Pages.
 
 ## Archivos
-- `index.html`: estructura del sitio.
-- `style.css`: diseño y estilos adaptables.
-- `script.js`: menú, carrito y envío del pedido a WhatsApp.
+- index.html: estructura, secciones, pedido y redes.
+- style.css: diseño adaptable a móvil y escritorio.
+- script.js: menú basado en la carta PDF, carrito, delivery y resumen para WhatsApp.
+- houfetts-logo.svg: versión vectorial del logotipo Houfetts con llama, reconstruida siguiendo el arte de la carta proporcionada.
 
-## Antes de publicar
-1. Reemplaza los productos, descripciones, imágenes y precios de ejemplo por el menú oficial.
-2. El enlace directo de WhatsApp facilitado está integrado. El carrito genera un resumen para copiar y pegar en el chat, porque el enlace compartido no expone el número de teléfono para formar un enlace con mensaje precargado.
-3. La ubicación, TikTok, Instagram y WhatsApp están enlazados con las URLs proporcionadas.
-4. Puedes activar GitHub Pages desde Settings → Pages → Deploy from a branch → main → /(root).
+## Publicar
+En GitHub: Settings → Pages → Deploy from a branch → main → /(root).
 
-El cliente debe revisar y enviar el mensaje desde WhatsApp para confirmar el pedido.
+## Información de la carta
+Los productos y precios visibles se transcribieron del PDF recibido. Cuando la carta no muestra un precio legible (Chicken Tenders, platos de pechuga/costilla y bebidas), se indica “Consultar” en lugar de inventarlo. Los cócteles/bebidas tienen su información tapada en el PDF. El cargo de delivery de “lugares cerca” figura como $0,75–$1,00 y requiere confirmación; Florida Norte $2, Urdesa $3 y Centro de la ciudad $4.
 
-El catálogo actual aún usa productos y precios de ejemplo; sustituirlos por el menú oficial antes de anunciar la web.
+La carta muestra horario martes-jueves 16:00–21:30, viernes-sábado 16:30–22:00 y domingo 16:30–21:30. Confirmar antes de publicar si sigue vigente.
+
+El formulario no guarda datos ni procesa pagos: prepara el resumen para que el cliente lo revise y lo envíe por WhatsApp. Los datos de transferencia se solicitan en el chat; no se publica información bancaria o cédula en el sitio.
+
+Ubicación: enlace de Google Maps proporcionado. Redes: TikTok e Instagram @houfetts.
