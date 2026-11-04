@@ -94,3 +94,56 @@ footer{background:#050505;border-top:1px solid #28231f;color:#a59e96}
 @keyframes stampFloat{0%,100%{transform:translateY(0) rotate(10deg)}50%{transform:translateY(-8px) rotate(7deg)}}
 @media(max-width:760px){.header-actions{gap:8px}.sound-toggle{padding:8px 9px}.sound-toggle span{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal-on-scroll{opacity:1;transform:none}}
+
+/* Distinctive editorial typography, hero motion, active navigation, social icons and legal area */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap');
+body{font-family:"Manrope","DM Sans",sans-serif}
+.brand,.hero h1,.intro h2,.section-heading h2,.location-content h2,.social-inner h2,.legal-grid h2{font-family:"Barlow Condensed",Oswald,sans-serif;font-weight:800;letter-spacing:.4px}
+.site-header nav .nav-link{position:relative;padding:11px 0}
+.site-header nav .nav-link:after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:2px;background:var(--orange);transition:right .25s ease}
+.site-header nav .nav-link:hover:after,.site-header nav .nav-link.active:after{right:0}
+.hero{isolation:isolate;overflow:hidden;min-height:700px;background-image:url("https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2200&q=95");background-position:center 53%}
+.hero-content{z-index:2}
+.hero-brand-lockup{position:absolute;z-index:2;top:42px;left:12%;display:flex;align-items:center;gap:12px;color:white;font:800 25px "Barlow Condensed";letter-spacing:2px}
+.hero-brand-lockup small{display:block;font:700 10px Manrope;letter-spacing:4px;color:var(--orange);margin-top:2px}
+.hero-brand-lockup .brand-mark{width:52px;height:52px}
+.hero h1{font-size:clamp(64px,8vw,104px);line-height:.88;letter-spacing:-1px}
+.hero-stamp{width:160px;height:160px;right:12%;bottom:80px;border:1px solid #ff6b2c;box-shadow:0 0 0 8px #ff6b2c13,0 0 35px #ff6b2c30;animation:stampOrbit 8s ease-in-out infinite;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;font-family:"Archivo Black",sans-serif;letter-spacing:1px}
+.hero-stamp span{font-size:19px}
+.hero-stamp b{font-size:37px;line-height:.95;color:var(--orange)}
+.hero-stamp i{font:700 7px Manrope;letter-spacing:2px;margin-top:7px;color:#d7c7ba}
+.hero-orbit{position:absolute;z-index:1;border:1px solid #ff6b2c44;border-radius:50%;pointer-events:none}
+.orbit-one{width:540px;height:540px;right:-120px;top:70px;animation:orbitRotate 32s linear infinite}
+.orbit-two{width:380px;height:380px;right:-40px;top:150px;border-style:dashed;animation:orbitRotate 22s linear infinite reverse}
+.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.69) 54%,rgba(0,0,0,.34))}
+.intro-image img{filter:saturate(.8) contrast(1.06);transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .5s}
+.intro-image:hover img{transform:scale(1.035) rotate(-.4deg);filter:saturate(1.08) contrast(1.08)}
+.intro-copy{transition:transform .45s ease}
+.intro.is-visible .intro-copy{animation:copyRise .8s .12s both}
+.intro.is-visible .intro-image{animation:imageSlide .8s both}
+.social-links{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:12px}
+.social-link{display:flex;align-items:center;gap:12px;padding:13px;background:#201e1b;border:1px solid #494039;border-radius:5px;color:#f5eee8;transition:transform .22s,border-color .22s,background .22s}
+.social-link:hover{transform:translateY(-4px);border-color:var(--orange);background:#2b211a}
+.social-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;font-size:24px;font-weight:800;color:white;background:#171717}
+.tiktok-icon{font-family:Arial,sans-serif;text-shadow:2px 1px #25f4ee,-2px -1px #fe2c55}
+.instagram-icon{font-size:29px;background:linear-gradient(135deg,#7445c5,#f3436d,#f7a53a)}
+.whatsapp-icon{border-radius:50%;background:#1b9d59;font-size:19px}
+.social-link strong,.social-link small{display:block}
+.social-link strong{font-size:12px}
+.social-link small{font-size:10px;color:#aaa39b;margin-top:3px}
+.social-link>b{margin-left:auto;color:var(--orange)}
+.legal-section{background:#101010;border-top:1px solid #302b26;padding:78px 0}
+.legal-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px}
+.legal-grid h2{font-size:clamp(36px,4.5vw,56px);line-height:.95;margin:0}
+.legal-grid h2 em{font-style:normal;color:var(--orange)}
+.legal-intro{font-size:13px;color:#aaa39b;line-height:1.7;margin-top:20px}
+.legal-copy h3{font:700 17px "Barlow Condensed";color:#ff8a51;margin:0 0 8px}
+.legal-copy p{font-size:12px;line-height:1.85;color:#b8b0a7;margin:0 0 22px}
+.customer-form select{display:block;width:100%;margin-top:7px;padding:12px;border:1px solid #423b34;background:#111;color:#f5f2ee;font:13px Manrope}
+@keyframes stampOrbit{0%,100%{transform:translateY(0) rotate(9deg)}50%{transform:translateY(-12px) rotate(-4deg)}}
+@keyframes orbitRotate{to{transform:rotate(360deg)}}
+@keyframes copyRise{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
+@keyframes imageSlide{from{opacity:0;transform:translateX(-25px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:850px){.social-links{grid-template-columns:1fr}.legal-grid{grid-template-columns:1fr;gap:25px}.hero-brand-lockup{left:8%}}
+@media(max-width:760px){.hero{min-height:650px;padding-top:100px}.hero-brand-lockup{top:25px}.hero h1{font-size:clamp(58px,15vw,80px)}.hero-stamp{right:7%;bottom:35px;width:120px;height:120px}.hero-stamp span{font-size:15px}.hero-stamp b{font-size:30px}.orbit-one{width:340px;height:340px;right:-180px;top:160px}.orbit-two{width:260px;height:260px;right:-130px;top:200px}.site-header nav .nav-link{padding:8px 0}.social-links{display:grid;grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.orbit-one,.orbit-two,.hero-stamp{animation:none}}
