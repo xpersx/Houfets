@@ -2,7 +2,7 @@
 const products = window.HOUFETTS_MENU || [];
 const WHATSAPP_CHAT_LINK="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
 const $=selector=>document.querySelector(selector);
-const $=selector=>[...document.querySelectorAll(selector)];
+const $$=selector=>[...document.querySelectorAll(selector)];
 const money=value=>"$"+Number(value).toFixed(2);
 let cart=[],category="Todos",search="",audio=null,toastTimer;
 function beep(type){try{if(!audio)audio=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type="sine";o.frequency.value=type==="add"?740:type==="remove"?270:500;g.gain.setValueAtTime(.018,audio.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+.08);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.085)}catch(e){}}
