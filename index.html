@@ -1,102 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Houfetts Grill. Parrillas y sabor para compartir en La 21.">
-  <title>Houfetts Grill</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#inicio"><img class="brand-logo-img" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span class="brand-word">GRILL<small>LA 21</small></span></a>
-    <div class="header-actions"><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" title="Activar sonidos de interfaz">♫ <span>Sonido apagado</span></button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div>
-    <nav id="mainNav">
-      <a class="nav-link active" href="#inicio">Inicio</a><a class="nav-link" href="#nosotros">Nosotros</a><a class="nav-link" href="#menu">Menú</a><a class="nav-link" href="#ubicacion">Ubicación</a>
-      <a class="nav-cart" href="#pedido">Mi pedido <span id="cartCount">0</span></a><a class="nav-contact" href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener">WhatsApp ↗</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-shade"></div><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-brand-lockup"><img class="brand-logo-img" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span class="brand-word">GRILL<small>LA 21</small></span></div>
-      <div class="hero-content">
-        <p class="eyebrow">SABOR A LA PARRILLA</p>
-        <h1>EL SABOR QUE<br><em>TE REÚNE.</em></h1>
-        <p>Disfruta algo delicioso, preparado para compartir.</p>
-        <a class="button button-primary" href="#menu">VER MENÚ <span>→</span></a>
-      </div>
-      <div class="hero-stamp"><span>FUEGO</span><b>&amp;</b><span>SABOR</span><i>DESDE LA PARRILLA</i></div>
-    </section>
-
-    <section class="intro section-wrap" id="nosotros">
-      <div class="intro-image"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1100&q=90" alt="Carne asada a la parrilla" loading="lazy"></div>
-      <div class="intro-copy">
-        <p class="eyebrow">BIENVENIDOS A HOUFETTS</p>
-        <h2>BUEN SABOR.<br><em>BUENOS MOMENTOS.</em></h2>
-        <p>En Houfetts queremos que disfrutes cada comida. Explora nuestro menú, arma tu pedido y envíalo fácilmente por WhatsApp.</p>
-        <a class="text-link" href="#menu">DESCUBRIR EL MENÚ ↗</a>
-      </div>
-    </section>
-
-    <section class="menu-section" id="menu">
-      <div class="section-wrap">
-        <div class="section-heading">
-          <div><p class="eyebrow">HECHO PARA DISFRUTAR</p><h2>NUESTRO <em>MENÚ</em></h2></div>
-          <p class="heading-note">Elige tus favoritos y agrégalos a tu pedido.</p>
-        </div>
-        <div class="notice"><strong>Carta oficial cargada.</strong> Productos y precios transcritos del menú facilitado. Algunos artículos no muestran precio legible en el PDF y aparecen como “Consultar”.</div>
-        <div class="category-tabs" id="categoryTabs">
-          <button class="active" data-category="Todos">Todo</button><button data-category="Smash">Smash</button><button data-category="Alitas">Alitas</button><button data-category="Pizzas">Pizzas</button><button data-category="Combos">Combos</button><button data-category="Parrillas">Parrillas</button><button data-category="Extras">Extras</button><button data-category="Bebidas">Bebidas</button>
-        </div>
-        <div class="menu-grid" id="menuGrid"></div>
-      </div>
-    </section>
-
-    <section class="order-section section-wrap" id="pedido">
-      <div class="section-heading">
-        <div><p class="eyebrow">CASI LISTO</p><h2>ARMA TU <em>PEDIDO</em></h2></div>
-        <p class="heading-note">Revisa tu carrito y completa tus datos.</p>
-      </div>
-      <div class="order-layout">
-        <div class="cart-panel">
-          <h3>Tu carrito <span id="cartItemsLabel">0 productos</span></h3>
-          <div id="cartItems" class="cart-items"><p class="empty-cart">Todavía no agregas productos.</p></div>
-          <div class="cart-total"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><div class="delivery-line"><span>Delivery</span><strong id="deliveryCost">Retiro: $0.00</strong></div><div class="cart-total grand-total"><span>Total estimado</span><strong id="cartTotal">$0.00</strong></div>
-        </div>
-        <form id="orderForm" class="customer-form">
-          <h3>Datos del cliente</h3>
-          <label>Nombre completo<input id="customerName" name="name" type="text" placeholder="Tu nombre" required></label>
-          <label>Dirección de entrega<input id="customerAddress" name="address" type="text" placeholder="Calle, sector y número de casa" required></label>
-          <label>Tipo de entrega<select id="deliveryMode" name="deliveryMode"><option value="pickup">Retiro en el local</option><option value="delivery">Delivery</option></select></label><label id="deliveryZoneWrap" hidden>Zona de delivery<select id="deliveryZone" name="deliveryZone"><option value="near">Lugares cerca — $0,75 a $1,00 (confirmar)</option><option value="florida">Florida Norte — $2,00</option><option value="urdesa">Urdesa — $3,00</option><option value="centro">Centro de la ciudad — $4,00</option></select></label><label>Referencia o indicaciones<textarea id="customerReference" name="reference" rows="2" placeholder="Ej. Casa de dos pisos, junto al parque..."></textarea></label>
-          <label>Notas del pedido<textarea id="customerNotes" name="notes" rows="2" placeholder="Detalles adicionales de tu pedido"></textarea></label>
-          <label>Método de pago<select id="paymentMethod" name="payment"><option value="Efectivo">Efectivo</option><option value="Transferencia Banco Pichincha (solicitar datos por WhatsApp)">Transferencia Banco Pichincha (solicitar datos por WhatsApp)</option><option value="Consultar otras formas de pago">Consultar otras formas de pago</option></select></label>
-          <button class="button button-primary submit-order" type="submit">ENVIAR PEDIDO POR WHATSAPP ↗</button>
-          <p class="form-hint">WhatsApp se abrirá con el pedido listo. Revisa el mensaje y pulsa enviar para confirmarlo.</p>
-          <p id="formMessage" class="form-message" role="status"></p>
-        </form>
-      </div>
-    </section>
-
-    <section class="location-section" id="ubicacion">
-      <div class="section-wrap location-content">
-        <div><p class="eyebrow">ENCUÉNTRANOS</p><h2>VISÍTANOS EN<br><em>LA 21</em></h2><p>Consulta nuestra ubicación en Google Maps y encuentra la mejor ruta para llegar.</p>
-          <a class="button button-light" href="https://maps.app.goo.gl/bFeumufzgm8fYtMw7" target="_blank" rel="noopener">ABRIR EN GOOGLE MAPS ↗</a>
-        </div>
-        <div class="map-card"><div class="map-pin">⌖</div><strong>HOUFETTS GRILL</strong><span>La 21 · Guayaquil, Ecuador</span><a href="https://maps.app.goo.gl/bFeumufzgm8fYtMw7" target="_blank" rel="noopener">Ver ubicación ↗</a></div><div class="hours-card"><h3>HORARIO DE ATENCIÓN</h3><p><b>Martes a jueves</b><span>4:00 pm – 9:30 pm</span></p><p><b>Viernes y sábado</b><span>4:30 pm – 10:00 pm</span></p><p><b>Domingo</b><span>4:30 pm – 9:30 pm</span></p><small>Horario indicado en la carta proporcionada.</small></div>
-      </div>
-    </section>
-  </main>
-<section class="legal-section" id="privacidad"><div class="section-wrap legal-grid"><div><p class="eyebrow">INFORMACIÓN DEL SITIO</p><h2>PRIVACIDAD <em>&amp; CONDICIONES</em></h2><p class="legal-intro">Información clara sobre el uso de los datos al preparar un pedido.</p></div><div class="legal-copy"><h3>Privacidad</h3><p>Los datos que ingreses en el formulario —nombre, dirección, referencia y notas— se usan únicamente para preparar y coordinar tu pedido por WhatsApp. Esta página no guarda una base de datos ni procesa pagos en línea. Evita enviar claves o datos bancarios sensibles.</p><h3>Pedidos y precios</h3><p>El pedido se considera solicitado cuando lo envías por WhatsApp y el restaurante confirma disponibilidad, precio final, delivery y forma de pago. Los precios y tarifas deben verificarse con el restaurante antes de publicar esta web.</p><h3>Uso del sitio</h3><p>Las imágenes pueden ser ilustrativas. La marca y los enlaces sociales identifican los canales oficiales compartidos por el negocio. No ingreses información bancaria sensible en este formulario.</p></div></div></section>
-
-  <section class="social-section" id="redes"><div class="section-wrap social-inner"><div><p class="eyebrow">SÍGUENOS</p><h2>HOUFETTS <em>EN REDES</em></h2><p>Entérate de novedades y comparte tus favoritos.</p></div><div class="social-links">
-<a class="social-link" href="https://www.tiktok.com/@houfetts" target="_blank" rel="noopener" aria-label="Abrir TikTok Houfetts"><span class="social-icon tiktok-icon">♪</span><span><strong>TikTok</strong><small>@houfetts</small></span><b>↗</b></a>
-<a class="social-link" href="https://www.instagram.com/houfetts/" target="_blank" rel="noopener" aria-label="Abrir Instagram Houfetts"><span class="social-icon instagram-icon">◎</span><span><strong>Instagram</strong><small>@houfetts</small></span><b>↗</b></a>
-<a class="social-link" href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener" aria-label="Contactar Houfetts por WhatsApp"><span class="social-icon whatsapp-icon">✓</span><span><strong>WhatsApp</strong><small>Contactar / pedir</small></span><b>↗</b></a>
-</div></div></section><footer><a class="brand footer-brand" href="#inicio"><img class="brand-logo-img" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span class="brand-word">GRILL<small>LA 21</small></span></a><p>© <span id="year"></span> Houfetts Grill. Todos los derechos reservados.</p></footer>
-</body>
-</html>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#11100f"><meta name="description" content="Houfetts Grill La 21. Smash burgers, alitas, pizzas y parrilla."><title>Houfetts Grill | La 21</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=20"><script src="script.js?v=20" defer></script></head><body>
+<div class="announcement"><span>HOUFETTS · LA 21</span><span>RETIRO O DELIVERY · UNA NO ES SUFICIENTE</span></div>
+<header class="header"><a href="#inicio" class="brand"><img class="logo-original" src="houfetts-logo.svg" alt="Houfetts GastroCup Artesanal"><span>GRILL<small>LA 21</small></span></a><button class="mobile-toggle" id="mobileToggle" aria-label="Abrir navegación" aria-expanded="false">☰</button><nav id="nav"><a href="#inicio" class="nav-link active">Inicio</a><a href="#nosotros" class="nav-link">Nosotros</a><a href="#menu" class="nav-link">Menú</a><a href="#pedido" class="nav-link">Mi pedido <b id="cartCount">0</b></a><a href="#ubicacion" class="nav-link">Ubicación</a><a class="nav-order" href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener">Pedir ahora ↗</a></nav></header>
+<main>
+<section class="hero" id="inicio"><div class="hero-photo"></div><div class="hero-overlay"></div><div class="hero-inner"><p class="eyebrow"><i></i> GASTROCUP ARTESANAL · DESDE 2023</p><h1>EL ANTOJO<br>NO SE <em>NEGOCIA.</em></h1><p class="hero-copy">Smash burgers, alitas y parrilla para los que vienen con hambre de verdad.</p><div class="hero-actions"><a href="#menu" class="btn btn-primary">EXPLORAR MENÚ ↗</a><a href="#nosotros" class="btn btn-ghost">CONÓCENOS</a></div><div class="hero-meta"><span>01 — SABOR</span><span>02 — FUEGO</span><span>03 — HOUFETTS</span></div></div><div class="hero-side-note">FUEGO <span>×</span> SABOR</div><div class="scroll-cue"><span></span> SCROLL PARA DESCUBRIR</div></section>
+<section class="intro section" id="nosotros"><div class="intro-image reveal"><img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=90" alt="Carne a la parrilla" loading="lazy"><span class="image-label">HECHO PARA COMPARTIR</span></div><div class="intro-copy reveal"><p class="eyebrow">BIENVENIDO A HOUFETTS</p><h2>NO ES SOLO<br>COMIDA. ES <em>EL PLAN.</em></h2><p>Una buena burger, alitas para compartir y ese sabor que te hace volver. Explora la carta, arma tu pedido y coordina tu entrega directamente con nosotros.</p><a href="#menu" class="under-link">DESCUBRE LA CARTA ↗</a></div></section>
+<section class="menu-section section" id="menu"><div class="section-head reveal"><div><p class="eyebrow">ELIGE TU FAVORITO</p><h2>LA CARTA <em>HOUFETTS.</em></h2></div><p>Todo el menú, organizado por categorías. Toca cualquier plato para ver sus detalles.</p></div><div class="menu-tools"><div class="filters" id="filters"><button class="filter active" data-category="Todos">Todo</button><button class="filter" data-category="Smash">Smash</button><button class="filter" data-category="Alitas">Alitas</button><button class="filter" data-category="Pizzas">Pizzas</button><button class="filter" data-category="Combos">Combos</button><button class="filter" data-category="Parrillas">Parrillas</button><button class="filter" data-category="Extras">Extras</button><button class="filter" data-category="Bebidas">Bebidas</button></div><label class="search-box">⌕ <input id="menuSearch" type="search" placeholder="Buscar en el menú…"></label></div><div class="menu-count"><span id="menuCount">Cargando menú…</span><span>PRECIOS EN USD · GUAYAQUIL</span></div><div class="menu-grid" id="menuGrid"></div><p class="menu-note">Las fotografías son referenciales. Los precios o detalles no legibles en la carta aparecen como “Consultar”.</p></section>
+<section class="feature-strip"><div><b>01</b><span>SMASH BURGERS</span></div><div><b>02</b><span>CHICKEN WINGS</span></div><div><b>03</b><span>PIZZAS</span></div><div><b>04</b><span>GRILL & EXTRAS</span></div></section>
+<section class="order-section section" id="pedido"><div class="section-head reveal"><div><p class="eyebrow">TU PEDIDO, A TU MANERA</p><h2>ARMA TU <em>COMBO.</em></h2></div><p>Agrega tus favoritos, revisa el total y envíanos tu pedido por WhatsApp.</p></div><div class="order-layout"><div class="cart-card"><div class="card-top"><div><p class="eyebrow">TU SELECCIÓN</p><h3>Mi carrito <span id="cartLabel">0 artículos</span></h3></div><button id="clearCart" class="clear-cart" type="button">Vaciar carrito</button></div><div id="cartItems" class="cart-items"></div><div class="totals"><p><span>Subtotal</span><b id="subtotal">$0.00</b></p><p><span>Delivery</span><b id="deliveryValue">Retiro en local · $0.00</b></p><p class="total"><span>Total estimado</span><b id="total">$0.00</b></p></div></div>
+<form class="order-form" id="orderForm"><p class="eyebrow">UN ÚLTIMO PASO</p><h3>¿A DÓNDE LO LLEVAMOS?</h3><label>Tu nombre<input id="customerName" required placeholder="Nombre y apellido" autocomplete="name"></label><div class="form-two"><label>Tipo de pedido<select id="deliveryMode"><option value="pickup">Retiro en el local</option><option value="delivery">Delivery</option></select></label><label>Forma de pago<select id="paymentMethod"><option>Efectivo</option><option>Transferencia Banco Pichincha</option><option>Consultar otra forma de pago</option></select></label></div><label id="zoneWrap" hidden>Zona de entrega<select id="deliveryZone"><option value="near">Lugares cerca · $0,75–$1,00</option><option value="florida">Florida Norte · $2,00</option><option value="urdesa">Urdesa · $3,00</option><option value="centro">Centro de la ciudad · $4,00</option></select></label><label id="addressWrap" hidden>Dirección de entrega<input id="customerAddress" placeholder="Calle, sector y número de casa"></label><label>Referencia<textarea id="customerReference" rows="2" placeholder="Casa, color de puerta, punto cercano…"></textarea></label><label>Notas del pedido<textarea id="customerNotes" rows="2" placeholder="Sin cebolla, salsas, indicaciones…"></textarea></label><button class="btn btn-primary submit" type="submit">CONTINUAR A WHATSAPP ↗</button><p class="form-status" id="formStatus" role="status">Tu pedido se prepara aquí; tú confirmas el envío en WhatsApp.</p></form></div></section>
+<section class="location-section section" id="ubicacion"><div class="location-copy reveal"><p class="eyebrow">ESTAMOS EN GUAYAQUIL</p><h2>ENCUÉNTRANOS<br>EN <em>LA 21.</em></h2><p>Consulta la ubicación y las indicaciones para llegar al local.</p><a class="btn btn-primary" href="https://maps.app.goo.gl/bFeumufzgm8fYtMw7" target="_blank" rel="noopener">CÓMO LLEGAR ↗</a></div><div class="location-panel reveal"><div class="map-visual"><span class="map-ring"></span><span class="map-pin">H</span><span class="map-caption">HOUFETTS · LA 21</span></div><div class="hours"><p class="eyebrow">HORARIO DE ATENCIÓN</p><p><b>Mar – Jue</b><span>4:00 pm – 9:30 pm</span></p><p><b>Vie – Sáb</b><span>4:30 pm – 10:00 pm</span></p><p><b>Domingo</b><span>4:30 pm – 9:30 pm</span></p><small>Lunes: cerrado · Horario según la carta.</small></div></div></section>
+<section class="social-section section"><div class="section-head reveal"><div><p class="eyebrow">SIGUE EL ANTOJO</p><h2>HOUFETTS <em>EN REDES.</em></h2></div><p>Encuéntranos, mira novedades y escríbenos.</p></div><div class="social-grid"><a href="https://www.tiktok.com/@houfetts" target="_blank" rel="noopener"><span class="social-symbol">♪</span><span><b>TikTok</b><small>@houfetts</small></span><i>↗</i></a><a href="https://www.instagram.com/houfetts/" target="_blank" rel="noopener"><span class="social-symbol">◎</span><span><b>Instagram</b><small>@houfetts</small></span><i>↗</i></a><a href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener"><span class="social-symbol">◉</span><span><b>WhatsApp</b><small>Haz tu pedido</small></span><i>↗</i></a></div></section>
+</main>
+<footer class="footer"><a href="#inicio" class="brand footer-brand"><img class="logo-original" alt="Houfetts"><span>GRILL <small>LA 21</small></span></a><p>© <span id="year"></span> Houfetts Grill. Todos los derechos reservados.</p><div><button class="footer-link" data-policy="privacy">Privacidad</button><button class="footer-link" data-policy="cookies">Cookies</button><button class="footer-link" data-policy="terms">Condiciones</button></div></footer>
+<div class="policy-backdrop" id="policyBackdrop" hidden><section class="policy-dialog" role="dialog" aria-modal="true"><button class="modal-close" id="closePolicy">×</button><p class="eyebrow">HOUFETTS GRILL · INFORMACIÓN LEGAL</p><h2 id="policyTitle">PRIVACIDAD Y COOKIES</h2><div class="policy-tabs"><button data-policy-tab="privacy">Privacidad</button><button data-policy-tab="cookies">Cookies</button><button data-policy-tab="terms">Condiciones</button></div><div class="policy-content" id="policyContent"></div><button class="btn btn-primary" id="policyAccept">ENTENDIDO</button></section></div>
+<div class="cookie-banner" id="cookieBanner" hidden><div><b>Tu privacidad importa.</b><p>Usamos almacenamiento local para recordar tu preferencia del aviso. No usamos cookies publicitarias ni guardamos tus datos de pedido en este sitio.</p><button class="cookie-more" data-policy="cookies">Leer política de cookies</button></div><div class="cookie-actions"><button id="cookieReject" class="btn btn-ghost">Rechazar</button><button id="cookieSettings" class="btn btn-ghost">Configurar</button><button id="cookieAccept" class="btn btn-primary">Aceptar</button></div></div>
+<div class="product-modal" id="productModal" hidden><div class="product-modal-backdrop" data-close-product></div><section class="product-dialog" role="dialog" aria-modal="true"><button class="modal-close" data-close-product>×</button><img id="modalImage" alt=""><div><p class="eyebrow" id="modalCategory"></p><h2 id="productTitle"></h2><p id="modalDescription"></p><div class="modal-buy"><b id="modalPrice"></b><button class="btn btn-primary" id="modalAdd">AGREGAR AL PEDIDO +</button></div></div></section></div><div class="toast" id="toast" role="status"></div>
+</body></html>
