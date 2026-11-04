@@ -1,5 +1,6 @@
+const IMG={smash:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85",wings:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=85",pizza:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85",fries:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85",grilled:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",chicken:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",sides:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85",combo:"https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=85"};
 const WHATSAPP_CHAT_LINK="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
-[
+const products=[
 {id:1,name:"Vicio",category:"Smash",price:3,image:IMG.smash,description:"Pan brioche, 100 g de carne, mozzarella, cebolla caramelizada, pepinillo y tocino. Incluye papas y cebolla caramelizada."},
 {id:2,name:"Bacon",category:"Smash",price:3.75,image:IMG.smash,description:"Pan, 100 g de carne, mozzarella, salsa bacon, dos tiras de tocino, pepinillo y salsas."},
 {id:3,name:"Adictiva con Pretzel",category:"Smash",price:4.25,image:IMG.smash,description:"Pan de papa, 100 g de carne, cheddar, cebolla caramelizada, pepinillo y tocino."},
@@ -58,9 +59,6 @@ const WHATSAPP_CHAT_LINK="https://api.whatsapp.com/message/WKT5HILUASINP1?autolo
 {id:56,name:"Costilla + patacones/papas y ensalada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta menciona patacones o papas fritas con ensalada ($2,50), arroz con menestra ($3,50 / $5,00) y moro de lenteja o choclo ($9,00). Confirmar qué valor corresponde al plato o al acompañamiento."},
 {id:57,name:"Costilla + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $3,50 / $5,00 para arroz con menestra. Confirmar cuál corresponde al tamaño."}
 ];
-
-const WHATSAPP="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],money=n=>"$"+Number(n).toFixed(2);
 let cart=[],category="Todos",search="",audio=null,toastTimer;
 function beep(type){try{if(!audio)audio=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type="sine";o.frequency.value=type==="add"?740:type==="remove"?270:500;g.gain.setValueAtTime(.018,audio.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+.08);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.085)}catch(e){}}
 document.addEventListener("pointerdown",()=>{if(!audio){try{audio=new(window.AudioContext||window.webkitAudioContext)();audio.resume();beep("tap")}catch(e){}}},{once:true,passive:true});
