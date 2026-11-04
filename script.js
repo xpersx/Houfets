@@ -1,16 +1,5 @@
-
 const WHATSAPP_CHAT_LINK="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
-const IMG={
- smash:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85",
- wings:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=85",
- pizza:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85",
- fries:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85",
- grilled:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
- chicken:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",
- sides:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85",
- combo:"https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=85"
-};
-const products=[
+[
 {id:1,name:"Vicio",category:"Smash",price:3,image:IMG.smash,description:"Pan brioche, 100 g de carne, mozzarella, cebolla caramelizada, pepinillo y tocino. Incluye papas y cebolla caramelizada."},
 {id:2,name:"Bacon",category:"Smash",price:3.75,image:IMG.smash,description:"Pan, 100 g de carne, mozzarella, salsa bacon, dos tiras de tocino, pepinillo y salsas."},
 {id:3,name:"Adictiva con Pretzel",category:"Smash",price:4.25,image:IMG.smash,description:"Pan de papa, 100 g de carne, cheddar, cebolla caramelizada, pepinillo y tocino."},
@@ -69,114 +58,42 @@ const products=[
 {id:56,name:"Costilla + patacones/papas y ensalada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta menciona patacones o papas fritas con ensalada ($2,50), arroz con menestra ($3,50 / $5,00) y moro de lenteja o choclo ($9,00). Confirmar qué valor corresponde al plato o al acompañamiento."},
 {id:57,name:"Costilla + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $3,50 / $5,00 para arroz con menestra. Confirmar cuál corresponde al tamaño."}
 ];
-let cart=[];
-const money=v=>"$"+Number(v).toFixed(2);
-const menuGrid=document.getElementById("menuGrid");
-const cartItems=document.getElementById("cartItems");
-const deliveryMode=document.getElementById("deliveryMode");
-const deliveryZone=document.getElementById("deliveryZone");
-const deliveryZoneWrap=document.getElementById("deliveryZoneWrap");
-const fees={florida:2,urdesa:3,centro:4};
-function deliveryInfo(){
- if(deliveryMode.value!=="delivery")return {label:"Retiro en el local",cost:0,known:true};
- if(deliveryZone.value==="near")return {label:"Lugares cerca: $0,75–$1,00 (confirmar)",cost:null,known:false};
- const cost=fees[deliveryZone.value]??0;
- const labels={florida:"Florida Norte",urdesa:"Urdesa",centro:"Centro de la ciudad"};
- return {label:(labels[deliveryZone.value]||"Delivery")+" — "+money(cost),cost,known:true};
-}
-function renderMenu(category="Todos"){
- const visible=category==="Todos"?products:products.filter(p=>p.category===category);
- if(category==="Bebidas"){
-  menuGrid.innerHTML='<div class="menu-empty"><h3>Bebidas y cócteles</h3><p>La carta incluye una sección de bebidas, pero los nombres y precios aparecen cubiertos en el PDF. Consulta disponibilidad por WhatsApp.</p><a class="button button-primary" href="'+WHATSAPP_CHAT_LINK+'" target="_blank" rel="noopener">CONSULTAR DISPONIBILIDAD ↗</a></div>';
-  return;
- }
- menuGrid.innerHTML=visible.map(p=>'<article class="menu-card"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"><div class="menu-card-body"><div class="menu-card-top"><h3>'+p.name+'</h3><span class="price">'+(p.price===null?"Consultar":money(p.price))+'</span></div><p>'+p.description+'</p>'+(p.price===null?'<a class="add-button consult-button" href="'+WHATSAPP_CHAT_LINK+'" target="_blank" rel="noopener">CONSULTAR POR WHATSAPP ↗</a>':'<button class="add-button" data-add="'+p.id+'" type="button">+ AGREGAR AL PEDIDO</button>')+'</div></article>').join("");
-}
-function renderCart(){
- const count=cart.reduce((s,i)=>s+i.qty,0);
- const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
- const delivery=deliveryInfo();
- const total=subtotal+(delivery.known?delivery.cost:0);
- document.getElementById("cartCount").textContent=count;
- document.getElementById("cartItemsLabel").textContent=count+" productos";
- document.getElementById("cartSubtotal").textContent=money(subtotal);
- document.getElementById("deliveryCost").textContent=delivery.known?money(delivery.cost):"Por confirmar";
- document.getElementById("cartTotal").textContent=delivery.known?money(total):money(subtotal)+" + delivery";
- if(!cart.length){cartItems.innerHTML='<p class="empty-cart">Todavía no agregas productos.</p>';return;}
- cartItems.innerHTML=cart.map(item=>'<div class="cart-row"><div><strong>'+item.name+'</strong><small>'+money(item.price)+' c/u · '+money(item.price*item.qty)+'</small></div><div class="quantity-controls"><button type="button" data-minus="'+item.id+'" aria-label="Restar">−</button><b>'+item.qty+'</b><button type="button" data-plus="'+item.id+'" aria-label="Sumar">+</button><button type="button" data-remove="'+item.id+'" aria-label="Quitar producto">×</button></div></div>').join("");
-}
-menuGrid.addEventListener("click",event=>{
- const button=event.target.closest("[data-add]");if(!button)return;
- const product=products.find(p=>p.id===Number(button.dataset.add));if(!product)return;
- const existing=cart.find(i=>i.id===product.id);
- if(existing)existing.qty++;else cart.push({...product,qty:1});
- renderCart();playUiSound("add");
-});
-cartItems.addEventListener("click",event=>{
- const b=event.target.closest("button");if(!b)return;
- const id=Number(b.dataset.plus||b.dataset.minus||b.dataset.remove);
- const item=cart.find(p=>p.id===id);if(!item)return;
- if(b.dataset.plus)item.qty++;
- if(b.dataset.minus)item.qty--;
- if(b.dataset.remove||item.qty<=0)cart=cart.filter(p=>p.id!==id);
- renderCart();playUiSound("tap");
-});
-document.getElementById("categoryTabs").addEventListener("click",event=>{
- const button=event.target.closest("button[data-category]");if(!button)return;
- document.querySelectorAll(".category-tabs button").forEach(b=>b.classList.toggle("active",b===button));
- renderMenu(button.dataset.category);playUiSound("tap");
-});
-deliveryMode.addEventListener("change",()=>{
- deliveryZoneWrap.hidden=deliveryMode.value!=="delivery";
- renderCart();
-});
-deliveryZone.addEventListener("change",renderCart);
-document.getElementById("orderForm").addEventListener("submit",event=>{
- event.preventDefault();
- const message=document.getElementById("formMessage");
- if(!cart.length){message.textContent="Agrega al menos un producto antes de enviar tu pedido.";return;}
- const name=document.getElementById("customerName").value.trim();
- const address=document.getElementById("customerAddress").value.trim();
- const reference=document.getElementById("customerReference").value.trim();
- const notes=document.getElementById("customerNotes").value.trim();
- const payment=document.getElementById("paymentMethod").value;
- const delivery=deliveryInfo();
- if(!name||!address){message.textContent="Completa tu nombre y dirección.";return;}
- const lines=cart.map(i=>"• "+i.name+" x"+i.qty+" — "+money(i.price*i.qty)).join("\n");
- const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
- const total=delivery.known?money(subtotal+delivery.cost):money(subtotal)+" + delivery por confirmar";
- const textMessage="¡Hola! Quiero realizar este pedido en Houfetts Grill:\n\n"+lines+"\n\n*Subtotal:* "+money(subtotal)+"\n*Entrega:* "+delivery.label+"\n*Total estimado:* "+total+"\n\n*Nombre:* "+name+"\n*Dirección:* "+address+"\n*Referencia:* "+(reference||"No especificada")+"\n*Notas:* "+(notes||"Ninguna")+"\n*Forma de pago:* "+payment+"\n\n¿Me ayudan a confirmar disponibilidad y el total final?";
- message.textContent="Se abrirá WhatsApp. Revisa el resumen y envíalo para confirmar tu pedido.";
- const summary=document.createElement("textarea");summary.value=textMessage;summary.readOnly=true;summary.className="order-summary-copy";summary.setAttribute("aria-label","Resumen del pedido para copiar");message.insertAdjacentElement("afterend",summary);summary.focus();summary.select();
- window.open(WHATSAPP_CHAT_LINK,"_blank","noopener");playUiSound("add");
-});
-const menuToggle=document.getElementById("menuToggle");
-const mainNav=document.getElementById("mainNav");
-menuToggle.addEventListener("click",()=>{const open=mainNav.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));playUiSound("tap");});
-mainNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{mainNav.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
-document.getElementById("year").textContent=new Date().getFullYear();
-renderMenu();renderCart();
-/* Interface sounds are opt-in and only play after the visitor enables them. */
-let soundEnabled=false;let audioContext;
-function playUiSound(kind="tap"){
- if(!soundEnabled)return;
- try{
-  audioContext ||= new (window.AudioContext||window.webkitAudioContext)();
-  if(audioContext.state==="suspended")audioContext.resume();
-  const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();
-  oscillator.type="sine";oscillator.frequency.value=kind==="add"?660:440;
-  gain.gain.setValueAtTime(.035,audioContext.currentTime);
-  gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.085);
-  oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start();oscillator.stop(audioContext.currentTime+.085);
- }catch(e){}
-}
-const soundToggle=document.getElementById("soundToggle");
-soundToggle.addEventListener("click",()=>{soundEnabled=!soundEnabled;soundToggle.setAttribute("aria-pressed",String(soundEnabled));soundToggle.innerHTML=soundEnabled?"♫ <span>Sonido activado</span>":"♫ <span>Sonido apagado</span>";if(soundEnabled)playUiSound("tap");});
-if("IntersectionObserver" in window){
- const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-visible");reveal.unobserve(e.target);}}),{threshold:.1});
- document.querySelectorAll(".intro,.menu-section,.order-section,.location-section,.social-section,.legal-section").forEach(s=>{s.classList.add("reveal-on-scroll");reveal.observe(s);});
- const links=[...document.querySelectorAll("#mainNav .nav-link")];
- const sections=[...document.querySelectorAll("main section[id],#privacidad,#redes")];
- const active=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id));}),{rootMargin:"-28% 0px -62% 0px"});
- sections.forEach(s=>active.observe(s));
-}
+
+const WHATSAPP="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0";
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],money=n=>"$"+Number(n).toFixed(2);
+let cart=[],category="Todos",search="",audio=null,toastTimer;
+function beep(type){try{if(!audio)audio=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type="sine";o.frequency.value=type==="add"?740:type==="remove"?270:500;g.gain.setValueAtTime(.018,audio.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+.08);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.085)}catch(e){}}
+document.addEventListener("pointerdown",()=>{if(!audio){try{audio=new(window.AudioContext||window.webkitAudioContext)();audio.resume();beep("tap")}catch(e){}}},{once:true,passive:true});
+function toast(msg){let el=$("#toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),1900)}
+function delivery(){if($("#deliveryMode").value!=="delivery")return{label:"Retiro en local",cost:0,known:true};let z=$("#deliveryZone").value;if(z==="near")return{label:"Lugares cerca · $0,75–$1,00 (confirmar)",cost:null,known:false};let v={florida:["Florida Norte",2],urdesa:["Urdesa",3],centro:["Centro de la ciudad",4]}[z];return{label:v[0]+" · "+money(v[1]),cost:v[1],known:true}}
+const cardObserver=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");cardObserver.unobserve(e.target)}}),{threshold:.08});
+function renderMenu(){let list=products.filter(p=>(category==="Todos"||p.category===category)&&((p.name+" "+p.description+" "+p.category).toLowerCase().includes(search)));if(category==="Bebidas"){$("#menuGrid").innerHTML='<p class="menu-note">La carta PDF no permite leer los nombres ni precios de bebidas. Consulta disponibilidad por WhatsApp.</p>';$("#menuCount").textContent="Bebidas · consultar";return}$("#menuCount").textContent=list.length+" productos";$("#menuGrid").innerHTML=list.map(p=>'<article class="menu-card"><div class="photo-wrap"><span class="card-category">'+p.category+'</span><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-top"><h3>'+p.name+'</h3><span class="price">'+(p.price===null?"Consultar":money(p.price))+'</span></div><p>'+p.description+'</p><div class="card-actions">'+(p.price===null?'<button class="add-button" data-consult="'+p.id+'">CONSULTAR ↗</button>':'<button class="add-button" data-add="'+p.id+'">AGREGAR +</button>')+'<button class="view-button" data-view="'+p.id+'">VER DETALLES</button></div></div></article>').join("");$$(".menu-card").forEach((el,i)=>{el.style.transitionDelay=(i%9)*40+"ms";cardObserver.observe(el)})}
+function renderCart(){let count=cart.reduce((s,p)=>s+p.qty,0),sub=cart.reduce((s,p)=>s+p.price*p.qty,0),d=delivery();$("#cartCount").textContent=count;$("#cartLabel").textContent=count+" artículos";$("#subtotal").textContent=money(sub);$("#deliveryValue").textContent=d.known?d.label:"Por confirmar";$("#total").textContent=d.known?money(sub+d.cost):money(sub)+" + delivery";$("#cartItems").innerHTML=cart.length?cart.map(p=>'<div class="cart-row"><div><strong>'+p.name+'</strong><small>'+money(p.price)+' c/u · '+money(p.price*p.qty)+'</small></div><div class="quantity-controls"><button data-minus="'+p.id+'" aria-label="Restar">−</button><b>'+p.qty+'</b><button data-plus="'+p.id+'" aria-label="Sumar">+</button><button data-remove="'+p.id+'" aria-label="Eliminar">×</button></div></div>').join(""):'<div class="empty-cart"><span>＋</span><b>Tu pedido empieza aquí</b><p>Agrega algo rico desde nuestro menú.</p></div>'}
+function addProduct(id){let p=products.find(x=>x.id===Number(id));if(!p||p.price===null){toast("Consulta el precio por WhatsApp");return}let row=cart.find(x=>x.id===p.id);row?row.qty++:cart.push({...p,qty:1});renderCart();beep("add");toast(p.name+" añadido")}
+function showProduct(id){let p=products.find(x=>x.id===Number(id));if(!p)return;$("#modalImage").src=p.image;$("#modalImage").alt=p.name;$("#modalCategory").textContent=p.category;$("#productTitle").textContent=p.name;$("#modalDescription").textContent=p.description;$("#modalPrice").textContent=p.price===null?"Precio: consultar":money(p.price);$("#modalAdd").dataset.id=p.id;$("#modalAdd").disabled=p.price===null;$("#productModal").hidden=false;document.body.classList.add("modal-open")}
+function hideProduct(){$("#productModal").hidden=true;document.body.classList.remove("modal-open")}
+$("#filters").addEventListener("click",e=>{let b=e.target.closest("[data-category]");if(!b)return;category=b.dataset.category;$$(".filter").forEach(x=>x.classList.toggle("active",x===b));renderMenu();beep("tap")});
+$("#menuSearch").addEventListener("input",e=>{search=e.target.value.toLowerCase().trim();renderMenu()});
+$("#menuGrid").addEventListener("click",e=>{let a=e.target.closest("[data-add]"),v=e.target.closest("[data-view]"),c=e.target.closest("[data-consult]");if(a)addProduct(a.dataset.add);if(v)showProduct(v.dataset.view);if(c){window.open(WHATSAPP,"_blank","noopener");beep("tap")}});
+$("#cartItems").addEventListener("click",e=>{let b=e.target.closest("button");if(!b)return;let id=Number(b.dataset.plus||b.dataset.minus||b.dataset.remove),p=cart.find(x=>x.id===id);if(!p)return;if(b.dataset.plus)p.qty++;if(b.dataset.minus)p.qty--;if(b.dataset.remove||p.qty<=0)cart=cart.filter(x=>x.id!==id);renderCart();beep(b.dataset.minus||b.dataset.remove?"remove":"add")});
+$("#clearCart").addEventListener("click",()=>{cart=[];renderCart();beep("remove");toast("Carrito vacío")});
+$("#modalAdd").addEventListener("click",()=>{addProduct($("#modalAdd").dataset.id);hideProduct()});
+$("#productModal").addEventListener("click",e=>{if(e.target.hasAttribute("data-close-product"))hideProduct()});
+$("#deliveryMode").addEventListener("change",()=>{$("#zoneWrap").hidden=$("#deliveryMode").value!=="delivery";$("#addressWrap").hidden=$("#deliveryMode").value!=="delivery";$("#customerAddress").required=$("#deliveryMode").value==="delivery";renderCart()});
+$("#deliveryZone").addEventListener("change",renderCart);
+$("#orderForm").addEventListener("submit",async e=>{e.preventDefault();if(!cart.length){toast("Agrega productos primero");return}let mode=$("#deliveryMode").value,name=$("#customerName").value.trim(),address=$("#customerAddress").value.trim();if(!name||(mode==="delivery"&&!address)){toast("Completa tus datos");return}let d=delivery(),sub=cart.reduce((s,p)=>s+p.price*p.qty,0),lines=cart.map(p=>"• "+p.name+" x"+p.qty+" — "+money(p.price*p.qty)).join("\n");let msg="¡Hola, Houfetts! Quiero hacer este pedido:\n\n"+lines+"\n\nSubtotal: "+money(sub)+"\nEntrega: "+d.label+"\nTotal estimado: "+(d.known?money(sub+d.cost):money(sub)+" + delivery por confirmar")+"\n\nNombre: "+name+"\nTipo: "+(mode==="delivery"?"Delivery":"Retiro en local")+"\nDirección: "+(mode==="delivery"?address:"Retiro en local")+"\nReferencia: "+($("#customerReference").value.trim()||"No indicada")+"\nNotas: "+($("#customerNotes").value.trim()||"Ninguna")+"\nPago: "+$("#paymentMethod").value+"\n\nPor favor confirmen disponibilidad y total final.";try{await navigator.clipboard.writeText(msg);$("#formStatus").textContent="Resumen copiado. Se abrirá WhatsApp; pega el mensaje y envíalo."}catch(err){$("#formStatus").textContent="No se pudo copiar automáticamente. Vuelve a intentarlo o escríbenos por WhatsApp."}window.open(WHATSAPP,"_blank","noopener");beep("add")});
+$("#mobileToggle").addEventListener("click",()=>{let open=$("#nav").classList.toggle("open");$("#mobileToggle").setAttribute("aria-expanded",String(open));$("#mobileToggle").textContent=open?"×":"☰";beep("tap")});$$(".nav-link").forEach(a=>a.addEventListener("click",()=>{$("#nav").classList.remove("open");$("#mobileToggle").textContent="☰";$("#mobileToggle").setAttribute("aria-expanded","false")}));
+let navObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)$$(".nav-link").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-32% 0px -58% 0px"});$$("main section[id]").forEach(s=>navObs.observe(s));
+let revealObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");revealObs.unobserve(e.target)}}),{threshold:.12});$$(".reveal").forEach(el=>revealObs.observe(el));
+const legal={privacy:"<h3>Información general</h3><p>Este sitio presenta información de Houfetts Grill, La 21, Guayaquil. Para consultas sobre pedidos o datos compartidos, utiliza el WhatsApp oficial enlazado en esta página.</p><h3>Datos del pedido</h3><p>El formulario solicita nombre, dirección si eliges delivery, referencia y notas. La página genera un mensaje para que lo revises y lo envíes a WhatsApp. El sitio no almacena pedidos en un servidor ni crea cuentas.</p><h3>WhatsApp y terceros</h3><p>Al abrir WhatsApp, el tratamiento posterior del mensaje se rige por las políticas de esa plataforma. Las tipografías e imágenes pueden cargarse desde proveedores externos que reciben datos técnicos del navegador.</p><h3>Pagos y seguridad</h3><p>La web no procesa pagos. No escribas claves, códigos de seguridad ni números completos de tarjetas. Solicita los datos de transferencia directamente al negocio.</p><h3>Consultas</h3><p>Para pedir aclaraciones sobre el uso de la información, contacta a Houfetts por su canal oficial.</p>",
+cookies:"<h3>Cookies y almacenamiento</h3><p>Este sitio no utiliza cookies publicitarias ni herramientas propias de seguimiento. Utiliza almacenamiento local del navegador para recordar si aceptaste o rechazaste el aviso de cookies.</p><h3>Recursos externos</h3><p>Google Fonts y las fotografías alojadas externamente pueden recibir información técnica del navegador al cargar. Si abres Instagram, TikTok, Google Maps o WhatsApp, esas plataformas aplican sus propias políticas.</p><h3>Tu elección</h3><p>Puedes borrar los datos locales de este sitio desde la configuración de tu navegador. No se instalan cookies no esenciales desde esta web.</p>",
+terms:"<h3>Menú y precios</h3><p>La carta y precios se transcriben del PDF facilitado. Los productos cuyos precios no se distinguen se muestran como “Consultar”. Confirma disponibilidad, ingredientes y precio final con el local.</p><h3>Pedidos</h3><p>Agregar productos al carrito no confirma una compra. El pedido se solicita cuando envías el mensaje por WhatsApp y el negocio confirma disponibilidad, tiempo y total.</p><h3>Delivery</h3><p>Tarifas indicadas en la carta: lugares cercanos $0,75–$1,00; Florida Norte $2,00; Urdesa $3,00; Centro de la ciudad $4,00. La tarifa final se confirma según la dirección.</p><h3>Pagos</h3><p>Esta web no procesa cobros. Confirma el método de pago y los datos de transferencia con el negocio por su canal oficial antes de pagar.</p><h3>Uso del sitio</h3><p>La marca, contenido y fotografías no deben copiarse ni reutilizarse sin autorización de sus titulares. Fotografías del menú pueden ser referenciales.</p><h3>Actualizaciones</h3><p>Estas condiciones pueden actualizarse si cambia la información o el proceso de pedidos.</p>"};
+function openPolicy(tab){$("#policyBackdrop").hidden=false;document.body.classList.add("modal-open");setPolicy(tab)}
+function setPolicy(tab){let title={privacy:"PRIVACIDAD Y DATOS",cookies:"POLÍTICA DE COOKIES",terms:"TÉRMINOS Y CONDICIONES"};$("#policyTitle").textContent=title[tab];$("#policyContent").innerHTML=legal[tab];$$("[data-policy-tab]").forEach(b=>b.classList.toggle("active",b.dataset.policyTab===tab))}
+function closePolicy(){$("#policyBackdrop").hidden=true;document.body.classList.remove("modal-open")}
+$$("[data-policy]").forEach(b=>b.addEventListener("click",()=>openPolicy(b.dataset.policy)));$$("[data-policy-tab]").forEach(b=>b.addEventListener("click",()=>setPolicy(b.dataset.policyTab)));$("#closePolicy").addEventListener("click",closePolicy);$("#policyAccept").addEventListener("click",closePolicy);$("#policyBackdrop").addEventListener("click",e=>{if(e.target===$("#policyBackdrop"))closePolicy()});
+function saveCookieChoice(v){try{localStorage.setItem("houfetts-cookie-choice",v)}catch(e){}$("#cookieBanner").hidden=true}
+try{if(!localStorage.getItem("houfetts-cookie-choice"))setTimeout(()=>$("#cookieBanner").hidden=false,850)}catch(e){$("#cookieBanner").hidden=false}
+$("#cookieAccept").addEventListener("click",()=>saveCookieChoice("accepted"));$("#cookieReject").addEventListener("click",()=>saveCookieChoice("rejected"));$("#cookieSettings").addEventListener("click",()=>openPolicy("cookies"));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){hideProduct();closePolicy()}});
+$("#year").textContent=new Date().getFullYear();renderMenu();renderCart();
