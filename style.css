@@ -96,7 +96,7 @@ footer{background:#050505;border-top:1px solid #28231f;color:#a59e96}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal-on-scroll{opacity:1;transform:none}}
 
 /* Distinctive editorial typography, hero motion, active navigation, social icons and legal area */
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 body{font-family:"Manrope","DM Sans",sans-serif}
 .brand,.hero h1,.intro h2,.section-heading h2,.location-content h2,.social-inner h2,.legal-grid h2{font-family:"Barlow Condensed",Oswald,sans-serif;font-weight:800;letter-spacing:.4px}
 .site-header nav .nav-link{position:relative;padding:11px 0}
