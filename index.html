@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Houfetts Grills - La 21. Parrillas, hamburguesas y comida preparada para disfrutar.">
-  <title>Houfetts Grills - La 21</title>
+  <meta name="description" content="Houfetts Grill. Parrillas y sabor para compartir en La 21.">
+  <title>Houfetts Grill</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -13,24 +13,24 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#inicio"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILLS · LA 21</small></span></a>
+    <a class="brand" href="#inicio"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILL</small></span></a>
     <div class="header-actions"><button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" title="Activar sonidos de interfaz">♫ <span>Sonido apagado</span></button><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div>
     <nav id="mainNav">
-      <a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#menu">Menú</a><a href="#ubicacion">Ubicación</a>
+      <a class="nav-link active" href="#inicio">Inicio</a><a class="nav-link" href="#nosotros">Nosotros</a><a class="nav-link" href="#menu">Menú</a><a class="nav-link" href="#ubicacion">Ubicación</a>
       <a class="nav-cart" href="#pedido">Mi pedido <span id="cartCount">0</span></a><a class="nav-contact" href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener">WhatsApp ↗</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-shade"></div>
+      <div class="hero-shade"></div><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-brand-lockup"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILL</small></span></div>
       <div class="hero-content">
         <p class="eyebrow">SABOR A LA PARRILLA</p>
         <h1>EL SABOR QUE<br><em>TE REÚNE.</em></h1>
         <p>Disfruta algo delicioso, preparado para compartir.</p>
         <a class="button button-primary" href="#menu">VER MENÚ <span>→</span></a>
       </div>
-      <div class="hero-stamp">FUEGO<br><b>&</b><br>SABOR</div>
+      <div class="hero-stamp"><span>FUEGO</span><b>&amp;</b><span>SABOR</span><i>DESDE LA PARRILLA</i></div>
     </section>
 
     <section class="intro section-wrap" id="nosotros">
@@ -78,6 +78,7 @@
           <label>Dirección de entrega<input id="customerAddress" name="address" type="text" placeholder="Calle, sector y número de casa" required></label>
           <label>Referencia o indicaciones<textarea id="customerReference" name="reference" rows="2" placeholder="Ej. Casa de dos pisos, junto al parque..."></textarea></label>
           <label>Notas del pedido<textarea id="customerNotes" name="notes" rows="2" placeholder="Detalles adicionales de tu pedido"></textarea></label>
+          <label>Método de pago<select id="paymentMethod" name="payment"><option value="Efectivo (confirmar disponibilidad)">Efectivo (confirmar)</option><option value="Transferencia (confirmar datos con el restaurante)">Transferencia (confirmar)</option><option value="Consultar al restaurante">Consultar al restaurante</option></select></label>
           <button class="button button-primary submit-order" type="submit">ENVIAR PEDIDO POR WHATSAPP ↗</button>
           <p class="form-hint">WhatsApp se abrirá con el pedido listo. Revisa el mensaje y pulsa enviar para confirmarlo.</p>
           <p id="formMessage" class="form-message" role="status"></p>
@@ -94,7 +95,12 @@
       </div>
     </section>
   </main>
+<section class="legal-section" id="privacidad"><div class="section-wrap legal-grid"><div><p class="eyebrow">INFORMACIÓN DEL SITIO</p><h2>PRIVACIDAD <em>&amp; CONDICIONES</em></h2><p class="legal-intro">Información clara sobre el uso de los datos al preparar un pedido.</p></div><div class="legal-copy"><h3>Privacidad</h3><p>Los datos que ingreses en el formulario —nombre, dirección, referencia y notas— se utilizan para preparar y coordinar tu pedido. Al continuar, el resumen se abre en WhatsApp para que tú lo revises y lo envíes. Esta página no incorpora una base de datos propia ni procesa pagos en línea.</p><h3>Pedidos y precios</h3><p>El pedido se considera solicitado cuando lo envías por WhatsApp y el restaurante confirma disponibilidad, precio final, delivery y forma de pago. Los precios y tarifas deben verificarse con el restaurante antes de publicar esta web.</p><h3>Uso del sitio</h3><p>Las imágenes pueden ser ilustrativas. La marca y los enlaces sociales identifican los canales oficiales compartidos por el negocio. No ingreses información bancaria sensible en este formulario.</p></div></div></section>
 
-  <section class="social-section"><div class="section-wrap social-inner"><div><p class="eyebrow">SÍGUENOS</p><h2>HOUFETTS <em>EN REDES</em></h2><p>Entérate de novedades y comparte tus favoritos.</p></div><div class="social-links"><a href="https://www.tiktok.com/@houfetts" target="_blank" rel="noopener">TikTok ↗</a><a href="https://www.instagram.com/houfetts/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener">WhatsApp ↗</a></div></div></section><footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILLS · LA 21</small></span></a><p>© <span id="year"></span> Houfetts Grills · La 21.</p></footer>
+  <section class="social-section"><div class="section-wrap social-inner"><div><p class="eyebrow">SÍGUENOS</p><h2>HOUFETTS <em>EN REDES</em></h2><p>Entérate de novedades y comparte tus favoritos.</p></div><div class="social-links">
+<a class="social-link" href="https://www.tiktok.com/@houfetts" target="_blank" rel="noopener" aria-label="Abrir TikTok Houfetts"><span class="social-icon tiktok-icon">♪</span><span><strong>TikTok</strong><small>@houfetts</small></span><b>↗</b></a>
+<a class="social-link" href="https://www.instagram.com/houfetts/" target="_blank" rel="noopener" aria-label="Abrir Instagram Houfetts"><span class="social-icon instagram-icon">◎</span><span><strong>Instagram</strong><small>@houfetts</small></span><b>↗</b></a>
+<a class="social-link" href="https://api.whatsapp.com/message/WKT5HILUASINP1?autoload=1&app_absent=0" target="_blank" rel="noopener" aria-label="Contactar Houfetts por WhatsApp"><span class="social-icon whatsapp-icon">✓</span><span><strong>WhatsApp</strong><small>Contactar / pedir</small></span><b>↗</b></a>
+</div></div></section><footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark" aria-label="Logo Houfetts"><span>H</span><i>G</i></span><span>HOUFETTS<small>GRILLS · LA 21</small></span></a><p>© <span id="year"></span> Houfetts Grills · La 21.</p></footer>
 </body>
 </html>
