@@ -54,11 +54,6 @@ window.HOUFETTS_MENU = [
 {id:48,name:"Morito de lenteja",category:"Extras",price:4,image:IMG.sides,description:"Porción de risotto de lenteja, chicloso y cremoso."},
 {id:49,name:"Proteína adicional",category:"Extras",price:2,image:IMG.grilled,description:"Opciones indicadas: pollo, chuleta, costilla o carne."},
 {id:50,name:"Chuzo parrillero",category:"Extras",price:.75,image:IMG.grilled,description:"Chuzo parrillero."},
-{id:51,name:"Pechuga asada con moro",category:"Parrillas",price:7,image:IMG.grilled,description:"Pechuga asada. Acompañamientos: patacones o papas fritas con ensalada ($2,00); arroz con menestra ($2,50 / $3,50); moro de lenteja o choclo ($7,00, según la carta). Confirmar cómo se aplican los valores."},
-{id:52,name:"Costilla de cerdo con moro",category:"Parrillas",price:9,image:IMG.grilled,description:"Costilla de cerdo. Acompañamientos: patacones o papas fritas con ensalada ($2,50); arroz con menestra ($3,50 / $5,00); moro de lenteja o choclo ($9,00, según la carta). Confirmar cómo se aplican los valores."},
-{id:53,name:"Chicken Tenders (porción)",category:"Parrillas",price:null,image:IMG.chicken,description:"La carta no muestra un precio legible para esta porción. Consultar."},
-{id:54,name:"Pechuga asada + patacones/papas y ensalada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta menciona patacones o papas fritas con ensalada ($2,00), arroz con menestra ($2,50 / $3,50) y moro de lenteja o choclo ($7,00). Confirmar qué valor corresponde al plato o al acompañamiento."},
-{id:55,name:"Pechuga asada + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $2,50 / $3,50 para arroz con menestra. Confirmar cuál corresponde al tamaño."},
-{id:56,name:"Costilla + patacones/papas y ensalada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta menciona patacones o papas fritas con ensalada ($2,50), arroz con menestra ($3,50 / $5,00) y moro de lenteja o choclo ($9,00). Confirmar qué valor corresponde al plato o al acompañamiento."},
-{id:57,name:"Costilla + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $3,50 / $5,00 para arroz con menestra. Confirmar cuál corresponde al tamaño."}
+{id:51,name:"Pechuga asada",category:"Parrillas",price:null,image:IMG.grilled,description:"Patacones / papas fritas y ensalada: $2,00. Arroz con menestra: $2,50 / $3,50. Moro de lenteja o moro de choclo: $7,00."},
+{id:52,name:"Costilla de cerdo",category:"Parrillas",price:null,image:IMG.grilled,description:"Patacones / papas fritas y ensalada: $2,50. Arroz con menestra: $3,50 / $5,00. Moro de lenteja o moro de choclo: $9,00."}
 ];;
