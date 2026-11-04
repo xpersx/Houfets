@@ -34,10 +34,10 @@ const products=[
 {id:21,name:"Pizza Hawaiana",category:"Pizzas",price:3,image:IMG.pizza,description:"Masa italiana, tomate, mozzarella gratinada, jamón de primera y orégano."},
 {id:22,name:"Pizza Mixta — Triple Sabor",category:"Pizzas",price:3,image:IMG.pizza,description:"Masa italiana, tomate, mozzarella gratinada, jamón de primera, peperoni, piña y orégano."},
 {id:23,name:"Chicken Tenders",category:"Extras",price:null,image:IMG.chicken,description:"Porción de papas, orégano, 3 tiras de pollo, 2 rebanadas de pan brioche, salsa rosada y salsa ranch. Precio no visible en el PDF."},
-{id:24,name:"Promo de Viciosas",category:"Combos",price:6.25,image:IMG.combo,description:"Promoción de viciosas. Consulta los componentes exactos al confirmar."},
-{id:25,name:"Promo de Adictivas",category:"Combos",price:8.5,image:IMG.combo,description:"Promoción de adictivas. Consulta los componentes exactos al confirmar."},
+{id:24,name:"Promo de Viciosas",category:"Combos",price:6.2,image:IMG.combo,description:"Promoción de viciosas. Consulta los componentes exactos al confirmar."},
+{id:25,name:"Promo de Adictivas",category:"Combos",price:8.9,image:IMG.combo,description:"Promoción de adictivas. Consulta los componentes exactos al confirmar."},
 {id:26,name:"Promo de Wings",category:"Combos",price:10,image:IMG.wings,description:"Promoción de wings según la carta."},
-{id:27,name:"Wings",category:"Combos",price:14,image:IMG.wings,description:"Combo wings según la carta."},
+{id:27,name:"Promo Wings — 15 + 5 alitas gratis",category:"Combos",price:14,image:IMG.wings,description:"Combo wings según la carta."},
 {id:28,name:"Promo Trío",category:"Combos",price:14,image:IMG.combo,description:"Promo trío según la presentación del menú."},
 {id:29,name:"Promo de El Pepe",category:"Combos",price:5.25,image:IMG.pizza,description:"Promoción El Pepe según la carta."},
 {id:30,name:"Pizzaditas",category:"Combos",price:10,image:IMG.pizza,description:"Promoción de pizzaditas según la carta."},
@@ -61,9 +61,13 @@ const products=[
 {id:48,name:"Morito de lenteja",category:"Extras",price:4,image:IMG.sides,description:"Porción de risotto de lenteja, chicloso y cremoso."},
 {id:49,name:"Proteína adicional",category:"Extras",price:2,image:IMG.grilled,description:"Opciones indicadas: pollo, chuleta, costilla o carne."},
 {id:50,name:"Chuzo parrillero",category:"Extras",price:.75,image:IMG.grilled,description:"Chuzo parrillero."},
-{id:51,name:"Pechuga asada",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra acompañamientos, pero no deja legible el precio base. Consultar."},
-{id:52,name:"Costilla de cerdo",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra acompañamientos, pero no deja legible el precio base. Consultar."},
-{id:53,name:"Chicken Tenders (porción)",category:"Parrillas",price:null,image:IMG.chicken,description:"La carta no muestra un precio legible para esta porción. Consultar."}
+{id:51,name:"Pechuga asada con moro",category:"Parrillas",price:7,image:IMG.grilled,description:"Pechuga asada con moro de lenteja o moro de choclo. La carta muestra $7,00."},
+{id:52,name:"Costilla de cerdo con moro",category:"Parrillas",price:9,image:IMG.grilled,description:"Costilla de cerdo con moro de lenteja o moro de choclo. La carta muestra $9,00."},
+{id:53,name:"Chicken Tenders (porción)",category:"Parrillas",price:null,image:IMG.chicken,description:"La carta no muestra un precio legible para esta porción. Consultar."},
+{id:54,name:"Pechuga asada + patacones/papas y ensalada",category:"Parrillas",price:2,image:IMG.grilled,description:"Acompañamiento indicado en la carta: patacones o papas fritas y ensalada. Precio que aparece junto a la opción: $2,00; confirmar si es adicional."},
+{id:55,name:"Pechuga asada + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $2,50 / $3,50 para arroz con menestra. Confirmar cuál corresponde al tamaño."},
+{id:56,name:"Costilla + patacones/papas y ensalada",category:"Parrillas",price:2.5,image:IMG.grilled,description:"Acompañamiento indicado en la carta: patacones o papas fritas y ensalada. Precio que aparece junto a la opción: $2,50; confirmar si es adicional."},
+{id:57,name:"Costilla + arroz con menestra",category:"Parrillas",price:null,image:IMG.grilled,description:"La carta muestra dos valores $3,50 / $5,00 para arroz con menestra. Confirmar cuál corresponde al tamaño."}
 ];
 let cart=[];
 const money=v=>"$"+Number(v).toFixed(2);
