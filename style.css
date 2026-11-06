@@ -66,3 +66,37 @@ body{background:#101010}
 @keyframes tickerMove{to{transform:translateX(-50%)}}
 @media(max-width:700px){.hero{min-height:740px}.hero h1{font-size:clamp(76px,18vw,116px)}.photo-wrap{height:165px}.street-ticker{padding:12px 0}.street-ticker-track{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.street-ticker-track{animation:none}}
+
+
+/* HOUFETTS — REDISEÑO HERO inspirado en la referencia BURGXL */
+.hero-reference{min-height:min(790px,calc(100svh - 112px));padding:90px max(5.2vw,calc((100vw - 1380px)/2));background:#101010}
+.hero-reference .hero-photo{z-index:-1;inset:0 0 0 auto;width:61%;height:100%;background-image:url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1500&q=95");background-size:contain;background-repeat:no-repeat;background-position:center right;filter:drop-shadow(0 28px 35px #000b);animation:burgerFloat 7s ease-in-out infinite alternate;transform-origin:center}
+.hero-reference .hero-overlay{z-index:-1;background:linear-gradient(90deg,#101010 0%,#101010 34%,#101010e8 47%,#10101025 74%,#10101015 100%),linear-gradient(0deg,#101010 0%,transparent 18%)}
+.hero-reference .hero-inner{max-width:620px;margin:0;animation:streetEnter .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-reference .hero h1,.hero-reference h1{font:clamp(65px,7.3vw,112px)/.91 "DM Sans",sans-serif;font-weight:900;letter-spacing:-5px;margin:0;color:#fff7ed}
+.hero-reference h1 em{font:inherit;color:#ff9800;letter-spacing:-5px}
+.hero-reference .hero-copy{max-width:490px;margin:27px 0 32px;color:#d6d2cd;font-size:15px;line-height:1.85}
+.hero-reference .hero-meta{gap:20px;margin-top:55px;color:#b5a99c;font-size:9px;font-weight:800}
+.hero-reference .hero-side-note{color:#ff9800}
+.hero-reference .btn-primary{background:#ff9800;color:#15110c;box-shadow:none;border:1px solid #ff9800}
+.hero-reference .btn-primary:hover{background:#ffad24;box-shadow:0 10px 30px #ff980044}
+.hero-reference .btn-ghost{border-color:#ff9800;color:#fff;background:#161616}
+.hero-reference .hero-contours{position:absolute;z-index:-1;left:-120px;top:-100px;width:470px;height:720px;opacity:.27;pointer-events:none;background:repeating-radial-gradient(ellipse at 18% 48%,transparent 0 13px,#8c806b 14px 15px,transparent 16px 23px);mask-image:linear-gradient(90deg,#000,transparent)}
+.hero-reference .eyebrow{color:#ffae27}
+.hero-reference .scroll-cue{color:#b5aaa0}
+.hero-reference .scroll-cue span{background:#ff9800}
+@keyframes burgerFloat{from{transform:translateY(7px) scale(1)}to{transform:translateY(-9px) scale(1.025)}}
+@media(max-width:700px){
+ .hero-reference{min-height:790px;padding:70px 23px 75px;align-items:flex-start}
+ .hero-reference .hero-photo{inset:auto -15% 25px auto;width:115%;height:48%;background-size:contain;background-position:center bottom;opacity:.96}
+ .hero-reference .hero-overlay{background:linear-gradient(180deg,#101010 0%,#101010 40%,#101010a8 62%,#10101035 100%)}
+ .hero-reference .hero-inner{max-width:100%}
+ .hero-reference h1{font-size:clamp(54px,13.5vw,88px);letter-spacing:-3px}
+ .hero-reference h1 em{letter-spacing:-3px}
+ .hero-reference .hero-copy{max-width:380px;font-size:13px;margin:18px 0 23px}
+ .hero-reference .hero-meta{gap:10px;flex-wrap:wrap;margin-top:27px;font-size:7px}
+ .hero-reference .hero-side-note{display:none}
+ .hero-reference .scroll-cue{right:22px;bottom:16px}
+ .hero-reference .hero-contours{width:300px;height:500px;opacity:.18}
+}
+@media(prefers-reduced-motion:reduce){.hero-reference .hero-photo{animation:none}}
