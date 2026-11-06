@@ -17,7 +17,7 @@ function showProduct(id){let p=products.find(x=>x.id===Number(id));if(!p)return;
 function hideProduct(){$("#productModal").hidden=true;document.body.classList.remove("modal-open")}
 $("#filters").addEventListener("click",e=>{let b=e.target.closest("[data-category]");if(!b)return;category=b.dataset.category;$$(".filter").forEach(x=>x.classList.toggle("active",x===b));renderMenu();beep("tap")});
 $("#menuSearch").addEventListener("input",e=>{search=e.target.value.toLowerCase().trim();renderMenu()});
-$("#menuGrid").addEventListener("click",e=>{let a=e.target.closest("[data-add]"),v=e.target.closest("[data-view]"),c=e.target.closest("[data-consult]");if(a)addProduct(a.dataset.add);if(v)showProduct(v.dataset.view);if(c){window.open(WHATSAPP,"_blank","noopener");beep("tap")}});
+$("#menuGrid").addEventListener("click",e=>{let a=e.target.closest("[data-add]"),v=e.target.closest("[data-view]"),c=e.target.closest("[data-consult]");if(a)addProduct(a.dataset.add);if(v)showProduct(v.dataset.view);if(c){window.open(WHATSAPP_CHAT_LINK,"_blank","noopener");beep("tap")}});
 $("#cartItems").addEventListener("click",e=>{let b=e.target.closest("button");if(!b)return;let id=Number(b.dataset.plus||b.dataset.minus||b.dataset.remove),p=cart.find(x=>x.id===id);if(!p)return;if(b.dataset.plus)p.qty++;if(b.dataset.minus)p.qty--;if(b.dataset.remove||p.qty<=0)cart=cart.filter(x=>x.id!==id);renderCart();beep(b.dataset.minus||b.dataset.remove?"remove":"add")});
 $("#clearCart").addEventListener("click",()=>{cart=[];renderCart();beep("remove");toast("Carrito vacío")});
 $("#modalAdd").addEventListener("click",()=>{addProduct($("#modalAdd").dataset.id);hideProduct()});
