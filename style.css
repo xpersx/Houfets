@@ -2,3 +2,67 @@
 
 /* Ajuste de navegación a la sección Nosotros */
 #nosotros{scroll-margin-top:110px}
+
+
+/* HOUFETTS STREET EDITION — dirección urbana */
+:root{--bg:#101010;--panel:#1b1b1b;--text:#f7f3ec;--muted:#aaa69e;--line:#38332e;--orange:#ff5a1f;--gold:#ffc247}
+body{background:#101010}
+.announcement{background:#ff5a1f;color:#160e09;font-weight:900}
+.header{background:#101010ed;border-bottom:1px solid #ff5a1f35}
+.nav-link:after{background:#ff5a1f}
+.nav-order,.btn-primary{background:#ff5a1f;color:#fff;box-shadow:5px 5px 0 #ffc247}
+.nav-order:hover,.btn-primary:hover{box-shadow:2px 2px 0 #ffc247}
+.hero{min-height:min(830px,calc(100svh - 112px));padding-top:110px;padding-bottom:110px}
+.hero-photo{background-image:url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=2200&q=92");filter:saturate(1.2) contrast(1.08);animation:streetZoom 20s ease-in-out infinite alternate}
+.hero-overlay{background:linear-gradient(90deg,#090909f5 0%,#090909d9 38%,#09090972 72%,#09090940 100%),linear-gradient(0deg,#101010 0%,transparent 24%)}
+.hero-inner{max-width:780px;animation:streetEnter .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .eyebrow{color:#ffc247}
+.hero h1{font-size:clamp(82px,11vw,158px);letter-spacing:-1px;text-shadow:5px 5px 0 #ff5a1f35}
+.hero h1 em{color:#ff5a1f;text-shadow:none}
+.hero-copy{max-width:470px;color:#f0e8df}
+.hero-meta{font-weight:900;color:#ffc247}
+.hero-side-note{color:#ffc247;font-size:30px}
+.scroll-cue span{background:#ffc247}
+.btn{border-radius:7px}
+.btn-ghost{border:1px solid #f7f3ec80;background:#1119}
+.section{position:relative}
+.intro{background:linear-gradient(120deg,#191715,#101010 65%)}
+.intro-image{border-radius:4px}
+.intro-image img{border-radius:4px;filter:contrast(1.05) saturate(1.08)}
+.intro-image:after{border:3px solid #ff5a1f;border-radius:4px;inset:13px -13px -13px 13px}
+.image-label{border-radius:2px;background:#ff5a1f;color:#160e09;font-weight:900}
+.section-head h2,.intro-copy h2,.location-copy h2{letter-spacing:.5px}
+.section-head h2 em,.intro-copy h2 em,.location-copy h2 em{color:#ff5a1f}
+.menu-section{background:#151515;border-block:1px solid #ff5a1f25}
+.filter{border-radius:5px;background:#242424}
+.filter:hover,.filter.active{background:#ff5a1f;border-color:#ff5a1f;box-shadow:4px 4px 0 #ffc247}
+.search-box{border-radius:5px;background:#202020}
+.menu-grid{gap:20px}
+.menu-card{border-radius:5px;background:#1d1d1d;border:1px solid #ffffff18;box-shadow:7px 7px 0 #000}
+.menu-card:hover{border-color:#ff5a1f;box-shadow:7px 7px 0 #ff5a1f}
+.photo-wrap{height:235px}
+.card-category{border-radius:3px;background:#ff5a1f;color:#130d08;border:0}
+.menu-card .price{color:#ffc247}
+.add-button{border-radius:4px;background:#ff5a1f;border-color:#ff5a1f}
+.view-button{border-radius:4px}
+.feature-strip{background:#ffc247;color:#15100b}
+.order-section{background:radial-gradient(ellipse at 85% 45%,#392015,transparent 42%),#101010}
+.cart-card,.order-form,.location-panel{border-radius:5px;background:#1b1b1b;border-color:#ffffff20}
+.order-form input,.order-form textarea,.order-form select{border-radius:5px}
+.location-section{background:#171717}
+.map-visual{background:repeating-linear-gradient(45deg,#211b17 0 18px,#1a1714 18px 36px)}
+.map-pin{background:#ff5a1f}
+.social-grid>a{border-radius:5px;background:#1b1b1b}
+.social-grid>a:hover{border-color:#ff5a1f}
+.social-symbol{border-radius:4px;background:#ff5a1f;color:#160e09}
+.footer{background:#080808}
+.reveal{transform:translateY(38px) skewY(1deg);filter:blur(3px)}
+.reveal.visible{transform:translateY(0) skewY(0);filter:blur(0)}
+@keyframes streetEnter{from{opacity:0;transform:translateY(36px) skewY(2deg);filter:blur(7px)}to{opacity:1;transform:translateY(0) skewY(0);filter:blur(0)}}
+@keyframes streetZoom{from{transform:scale(1.04)}to{transform:scale(1.15)}}
+.street-ticker{overflow:hidden;background:#ff5a1f;color:#160e09;border-block:3px solid #ffc247;padding:15px 0;white-space:nowrap}
+.street-ticker-track{display:inline-flex;gap:34px;min-width:max-content;animation:tickerMove 26s linear infinite;font:28px "Bebas Neue";letter-spacing:2px}
+.street-ticker span:nth-child(even){color:#fff3df}
+@keyframes tickerMove{to{transform:translateX(-50%)}}
+@media(max-width:700px){.hero{min-height:740px}.hero h1{font-size:clamp(76px,18vw,116px)}.photo-wrap{height:165px}.street-ticker{padding:12px 0}.street-ticker-track{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.street-ticker-track{animation:none}}
